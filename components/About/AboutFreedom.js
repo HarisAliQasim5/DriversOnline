@@ -13,16 +13,21 @@ const AboutFreedom = () => {
           </p>
         </div>
 
-        <div className='grid lg:grid-cols-2 gap-x-5 gap-y-10 mt-5'>
-            <div className={` ${darkMode ? "bg-light" : "bg-gradient-to-br from-gray-100 via-gray-300  to-gray-400 "} px-4 py-2 rounded-lg`}>
+        <div className='grid lg:grid-cols-2 gap-x-8 gap-y-10 mt-5'>
+            <div className={` ${darkMode ? "bg-light" : "bg-gradient-to-br from-gray-100 via-gray-300  to-gray-400 "} px-4 py-10 rounded-lg`}>
                     <h1 className='text-2xl font-bold'>Drivers Online Vision</h1>
                     <p className='pt-4'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat ducimus porro magni adipisci perspiciatis, excepturi quaerat dolorum nobis rem nihil molestiae, incidunt, natus a perferendis? Esse, consequatur molestiae. Harum, ratione.</p>
-                    <img src="./images/contact.jpg" alt=""  className='mt-5'/>
+                    <div className='flex justify-center'>
+                    <img src="./images/aboutvalues.png" alt=""  className='mt-5'/>
+                    </div>
+                    
             </div>
-            <div className={`${darkMode ? "bg-light" : "bg-gradient-to-br from-gray-100 via-gray-300  to-gray-400 "} px-4 py-2 rounded-lg`}>
+            <div className={`${darkMode ? "bg-light" : "bg-gradient-to-br from-gray-100 via-gray-300  to-gray-400 "} px-4 py-10 rounded-lg`}>
                     <h1 className='text-2xl font-bold'>Drivers Online Mission</h1>
                     <p className='pt-4'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat ducimus porro magni adipisci perspiciatis, excepturi quaerat dolorum nobis rem nihil molestiae, incidunt, natus a perferendis? Esse, consequatur molestiae. Harum, ratione.</p>
-                    <img src="./images/contact.jpg" alt=""  className='mt-5'/>
+                    <div className='flex justify-center'>
+                    <img src="./images/aboutvison.png" alt=""  className='mt-5'/>
+                    </div>
             </div>
 
         </div>

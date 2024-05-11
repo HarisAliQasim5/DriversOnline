@@ -10,7 +10,7 @@ const AboutFeatures = () => {
       className={`px-4 sm:px-10 ${darkMode ? "bg-dark" : ""} font-serif pt-10`}
     >
       <div
-        className={`mx-auto px-32 py-16 ${
+        className={`mx-auto px-2 sm:px-10 lg:px-32 py-16 ${
           darkMode ? "bg-light " : "bg-gradient-to-br from-gray-200 to-gray-400"
         }  rounded-2xl`}
       >

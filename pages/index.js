@@ -15,6 +15,7 @@ import HomeFairPrice from '@/components/HomePage/HomeFairPrice';
 import HomeFact from '@/components/HomePage/HomeFact';
 import HomeRating from '@/components/HomePage/HomeRating';
 import HomeDrivers from '@/components/HomePage/HomeDrivers';
+import Footer from '@/components/layoutScreen/Footer';
 
 export default function Home() {
   const { darkMode } = useDarkMode();
@@ -31,19 +32,6 @@ export default function Home() {
       {/* ------------------------- End Of Whatsapp Button ---------------------------- */}
 
 
-
-      {/* ------------------------- About Section ------------------------------------- */}
-
-      {/* <div className={`${darkMode ? "bg-[#171C30] text-white " : "bg-white text-slate-800 "}`}>
-      
-        <Sample/>
-      </div> */}
-
-      {/* ------------------------- End of About Section ------------------------------ */}
-
-      
-
-       {/* <WhyChooseUs/> */}
       <HomeRating/>
       <HomeInsights/>
       <HomeFeatures/>
@@ -54,8 +42,7 @@ export default function Home() {
       <Safety/>
       <Testimonials/>
       <DownloadApp/>  
-      
-       {/* <Timeline/> */}
+      <Footer/>
 
     </div>
   );

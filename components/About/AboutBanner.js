@@ -3,7 +3,7 @@ import styles from '../../styles/About.module.css';
 const AboutBanner = () => {
   return (
     <div className='mx-auto font-serif'>
-      <div className='pt-20'>
+      <div className='pt-16'>
 
 <section
     className={`hidden md:block  bg-cover  bg-fixed  bg-no-repeat ${styles.background} py-28`}>
@@ -20,7 +20,7 @@ const AboutBanner = () => {
 <header className="relative md:pt-7 md:hidden">
     <img
         className="w-full h-auto"
-        src="./images/contact.jpg"
+        src="./images/aboutmain2.png"
         alt="Product Banner"
     />
 
