@@ -7,7 +7,7 @@ const HomeInsights = () => {
   const { language } = useLanguage();
   return (
     <div>
-     {language === 'en' &&  <div className={` ${darkMode ? "bg-dark" : ""} px-4 sm:px-10 pt-20 pb-5 `}>
+     {language === 'en' &&  <div className={` ${darkMode ? "bg-dark" : ""} px-4 sm:px-10 pt-32 pb-5 `}>
         <div
           className={`font-serif  ${
             darkMode ? "bg-light" : "bg-gradient-to-br from-gray-200 to-gray-400"

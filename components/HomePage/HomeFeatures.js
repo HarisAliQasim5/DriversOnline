@@ -72,7 +72,7 @@ const HomeFeatures = () => {
   const { language } = useLanguage();
 
   return (
-    <div className={`px-4 sm:px-10 ${darkMode ? "bg-dark" : ""} font-serif`}>
+    <div className={`px-4 sm:px-10 ${darkMode ? "bg-dark" : ""} pt-20 font-serif`}>
       {language == 'en' &&
       <div>
         <h1 className="text-3xl pt-10 font-bold bg-gradient-to-br from-purple to-magenta text-transparent bg-clip-text">Features</h1>

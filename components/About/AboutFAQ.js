@@ -37,18 +37,22 @@ const AboutFAQ = () => {
   };
 
   return (
-    <div>
-      <section className="py-10 bg-gray-50 sm:py-16 lg:py-24">
+    <div className={`px-4 sm:px-10 ${darkMode ? "bg-dark" : ""} font-serif`}>
+      <section className="py-10  sm:py-16 lg:py-24">
         <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">
+            <h2 className={`text-3xl font-bold leading-tight ${
+                    darkMode
+                      ? "bg-gradient-to-br from-purple to-white text-transparent bg-clip-text"
+                      : "bg-gradient-to-br from-purple to-[#640D6B] text-transparent bg-clip-text"
+                  } text-black sm:text-4xl lg:text-5xl`}>
               Explore Common Questions
             </h2>
           </div>
           <div className="max-w-3xl mx-auto mt-8 space-y-4 md:mt-16">
             {data.map((item, index) => (
               <div key={index} className={`transition-all duration-200 bg-white border border-gray-200 shadow-lg cursor-pointer ${isOpen[index] ? 'bg-gray-50' : ''}`}>
-                <button type="button" onClick={() => toggleAnswer(index)} className="flex items-center justify-between w-full px-4 py-5 sm:p-6">
+                <button type="button" onClick={() => toggleAnswer(index)} className="flex items-center justify-between w-full px-4 py-5 ">
                   <span className="flex text-lg font-semibold text-black">{item.question}</span>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className={`w-6 h-6 text-gray-400 transform ${isOpen[index] ? 'rotate-0' : '-rotate-180'}`}>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -60,7 +64,7 @@ const AboutFAQ = () => {
               </div>
             ))}
           </div>
-          <p className="text-center text-gray-600 text-base mt-9">
+          <p className="text-center text-purple text-base mt-9">
             Still have questions?
             <span className="cursor-pointer font-medium text-tertiary transition-all duration-200 hover:text-tertiary focus:text-tertiary hover:underline">Contact
               our support

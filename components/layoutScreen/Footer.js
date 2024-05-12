@@ -14,7 +14,7 @@ const Footer = () => {
         
         <div className="container mx-auto flex flex-col justify-between p-4 text-center md:p-10 lg:flex-row">
           <div className="flex flex-col justify-around lg:text-left">
-            <h1 className="py-2 text-3xl font-medium leading-tight title-font">
+            <h1 className="py-2 text-3xl font-medium leading-tight title-font text-purple">
               DriversOnline
             </h1>
           </div>
@@ -140,10 +140,8 @@ const Footer = () => {
 
         <hr className="border-gray-500 w-full" />
 
-        <ul className="flex flex-wrap gap-x-7 gap-4">
-          <li><a href="javascript:void(0)" className="hover:underline text-gray-200 text-base transition-all">Terms of Service</a></li>
-          <li><a href="javascript:void(0)" className="hover:underline text-gray-200 text-base transition-all">Privacy Policy</a></li>
-          <li><a href="javascript:void(0)" className="hover:underline text-gray-200 text-base transition-all">Contact</a></li>
+        <ul className="flex flex-wrap gap-x-3 sm:gap-x-7 gap-4">
+          <p>© 2024 RideTechnology Global FZ-LLC</p>
         </ul>
       </div>
     </footer>

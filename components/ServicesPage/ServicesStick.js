@@ -22,14 +22,14 @@ const factData = [
   },
 ];
 
-const HomeFact = () => {
+const ServicesStick = () => {
 
   const { darkMode } = useDarkMode();
   const { language } = useLanguage();
   return (
-    <div className={`sm:px-10 px-4 font-serif ${darkMode ? "bg-dark" : ""} pt-20`}>
+    <div className={`sm:px-10 px-4 font-serif ${darkMode ? "bg-dark text-white" : ""} pb-10`}>
       <p className="pt-5 text-4xl md:text-5xl pb-10 w-3/4">
-        Since you can give a <span className="text-purple">fair price</span> rather than just pray for it
+      People <span className="text-purple">stick</span> with us because
       </p>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-5 ">
@@ -39,7 +39,7 @@ const HomeFact = () => {
               <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-200">
                 {fact.icon}
               </div>
-              <h1 className="font-bold text-xl mb-2 pt-4">{fact.title}</h1>
+              <h1 className="font-bold text-xl mb-2 pt-4 text-purple">{fact.title}</h1>
               <p>{fact.description}</p>
             </div>
           </div>
@@ -49,4 +49,4 @@ const HomeFact = () => {
   );
 };
 
-export default HomeFact;
+export default ServicesStick;

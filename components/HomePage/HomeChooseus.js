@@ -22,7 +22,7 @@ const HomeChooseus = () => {
     const { darkMode } = useDarkMode();
     const { language } = useLanguage();
   return (
-    <div className={` ${darkMode ? "bg-dark" : ""} px-4 sm:px-10 pt-20 pb-5`}>
+    <div className={` ${darkMode ? "bg-dark" : ""} px-4 sm:px-10 pt-32 pb-5`}>
       <div className={`font-serif  ${darkMode ? "bg-light" : "bg-gradient-to-br from-gray-200 to-gray-400"} rounded-3xl p-2 `}>
         <h1 className="text-purple font-bold pb-5 text-4xl lg:hidden italic ">
           Why Choose Us

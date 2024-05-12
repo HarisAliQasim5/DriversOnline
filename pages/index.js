@@ -22,7 +22,7 @@ export default function Home() {
   const { language } = useLanguage();
 
   return (
-    <div className={`${darkMode ? "bg-[#171C30] text-white " : "bg-white text-black "} h-screen `}>
+    <div className={`${darkMode ? "bg-[#171C30] text-white " : "bg-white text-black "} overflow-x-hidden `}>
       
       <Swiper/>
       {/* ------------------------ Whatsapp Button------------------------------------ */}

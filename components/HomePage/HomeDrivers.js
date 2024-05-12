@@ -46,7 +46,7 @@ const HomeDrivers = () => {
 
   return (
     <div
-      className={`px-4 sm:px-10 ${darkMode ? "bg-dark" : ""} font-serif pt-16`}
+      className={`px-4 sm:px-10 ${darkMode ? "bg-dark" : ""} font-serif pt-32`}
     >
       <div
         className={`${

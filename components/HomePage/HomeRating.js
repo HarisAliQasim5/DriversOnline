@@ -6,7 +6,7 @@ const HomeRating = () => {
   const { language } = useLanguage();
   return (
     <div>
-        {language ==='en' && <div className={`sm:px-10 px-4 font-serif pt-16 ${darkMode ? "bg-dark" : ""}`}>
+        {language ==='en' && <div className={`sm:px-10 px-4 font-serif pt-20 ${darkMode ? "bg-dark" : ""}`}>
       <div className="lg:grid lg:grid-cols-4">
         <div className="lg:col-span-3">
           <p className="pt-5 text-4xl md:text-5xl pb-10 ">

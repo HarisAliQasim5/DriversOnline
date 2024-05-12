@@ -6,7 +6,7 @@ const DownloadApp = () => {
   const { darkMode } = useDarkMode();
   const { language } = useLanguage();
   return (
-    <div className={` px-4 sm:px-10 font-serif ${darkMode ? "bg-dark" : ""} pb-5`}>
+    <div className={` px-4 sm:px-10 font-serif ${darkMode ? "bg-dark" : ""} pb-20 pt-10`}>
       <div className="relative flex md:items-center pt- sm:pt-3">
         <img
           src="./images/downloadapp.png"

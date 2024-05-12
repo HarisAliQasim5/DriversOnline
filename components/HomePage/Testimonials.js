@@ -61,7 +61,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section className={`px-4 sm:px-10 ${darkMode ? "bg-dark" : ""} pb-20`}>
+    <section className={`px-4 sm:px-10 ${darkMode ? "bg-dark" : ""} pb-20 pt-20`}>
 
 <h1 className=" text-purple font-bold pb-5 text-4xl  italic ">
             Testimonials

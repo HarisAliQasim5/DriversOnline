@@ -7,7 +7,7 @@ const Safety = () => {
   const { language } = useLanguage();
 
   return (
-    <div className={` ${darkMode ? "bg-dark": ""} px-4 sm:px-10 py-4  font-serif`}>
+    <div className={` ${darkMode ? "bg-dark": ""} px-4 sm:px-10 py-4  font-serif pt-28`}>
       {language === 'en' && <div>
       <div className={`grid lg:grid-cols-3  rounded-3xl ${darkMode ? "bg-light" : "bg-gradient-to-br from-gray-200 to-gray-400"}  py-5 px-6`}>
         <div className='flex flex-col  lg:col-span-2 lg:pr-16 xl:pr-28 '>

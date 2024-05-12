@@ -7,6 +7,7 @@ import { useLanguage } from '../components/ContextFiles/LanguageContext';
 import Login from '@/components/Login';
 import Sample from '@/components/Sample';
 import AboutSection from '@/components/About/AboutSection';
+import Footer from '@/components/layoutScreen/Footer';
 
 const contact = () => {
   const { darkMode } = useDarkMode();
@@ -16,9 +17,7 @@ const contact = () => {
       <ContactBanner/>
       <ContactBox/>
       <ContactForm/>
-      {/* <Sample/> */}
-      {/* <Login/> */}
-      {/* <AboutSection/> */}
+      <Footer/>
     </div>
   )
 }
