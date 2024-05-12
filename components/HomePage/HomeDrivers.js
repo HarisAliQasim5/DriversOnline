@@ -58,7 +58,7 @@ const HomeDrivers = () => {
           alt="Display"
           className="w-full rounded-t-3xl"
         />
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 px-4 pt-4 gap-x-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 px-4 pt-4 gap-x-4 gap-y-5">
       {cardData.map((card, index) => (
         <div key={index} className={`block rounded-lg ${darkMode ? "bg-dark" : "bg-white"} p-6 text-surface shadow-secondary-1`}>
           <h5 className="mb-2 text-xl font-medium leading-tight">{card.title}</h5>
