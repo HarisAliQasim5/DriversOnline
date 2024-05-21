@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
           </div>
         </main>
       </div> */}
-      <div className='relative flex flex-col flex-1 overflow-y-auto  p-4 '>{children}</div>
+      <div className='relative flex flex-col flex-1 overflow-y-auto  lg:px-4 lg:pt-0.5 '>{children}</div>
     </div>
   );
 };

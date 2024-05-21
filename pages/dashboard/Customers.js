@@ -5,7 +5,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 // import { toast } from 'react-toastify';
 import Loader from '@/components/Loader';
-import CustomerPopup from '@/components/CustomerPopup';
+import CustomerPopup from '@/components/Dasboard/CustomerPopup';
 import updateRecord from '@/firebase/updateRecord';
 import deleteById from '@/firebase/deleteById';
 import Layout from '@/components/Dasboard/Layout';
@@ -42,7 +42,6 @@ const Customers = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredData, setFilteredData] = useState([]);
     const [popup, setpopup] = useState(false);
-    const [sidebar, setsidebar] = useState(false)
     const [editData, seteditData] = useState();
     const [loading, setLoading] = useState(false);
     const [type, settype] = useState();
@@ -136,7 +135,7 @@ const Customers = () => {
         <Layout>
           <Navbar/>
           
-        <div className='lg:-mt-10 xl:-mt-10'>
+        <div className='lg:-mt-10 xl:-mt-10 p-4 lg:p-0'>
             <CustomerPopup isOpen={popup}  setIsOpen={setpopup} data={editData} seteditData={seteditData} handleEdit={handleEdit} />
           {loading ? <Loader/> :
 
@@ -146,7 +145,7 @@ const Customers = () => {
        
         <h1 className={`text-3xl font-bold  pb-5 text-red-600  pt-10 `}>Users</h1>
         <div className="mx-auto max-w-screen-xl ">
-          <div className={`bg-[#1E1E2C]  shadow-md sm:rounded-lg overflow-hidden mx-auto  ${sidebar == false ? "" : "lg:ml-16"}`}>
+          <div className={`bg-[#1E1E2C]  shadow-md sm:rounded-lg overflow-hidden mx-auto`}>
             <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
               <div className="flex gap-x-6 sm:gap-x-0 sm:grid justify-between w-full md:w-1/2">
                     <form onSubmit={(e)=>e.preventDefault()} className="flex items-center">
