@@ -31,7 +31,6 @@ export default function Home() {
       </div>
       {/* ------------------------- End Of Whatsapp Button ---------------------------- */}
 
-
       <HomeRating/>
       <HomeInsights/>
       <HomeFeatures/>

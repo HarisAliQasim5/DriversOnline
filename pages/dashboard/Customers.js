@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import getRecords from '../../firebase/getRecords';
+import getRecords from '@/firebase/getRecords';
 import { HiOutlineRefresh } from "react-icons/hi";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import { toast } from 'react-toastify';
-import Loader from '../../components/Loader';
-import CustomerPopup from '../../components/CustomerPopup';
-import updateRecord from '../../firebase/updateRecord';
-import deleteById from '../../firebase/deleteById';
+// import { toast } from 'react-toastify';
+import Loader from '@/components/Loader';
+import CustomerPopup from '@/components/CustomerPopup';
+import updateRecord from '@/firebase/updateRecord';
+import deleteById from '@/firebase/deleteById';
+import Layout from '@/components/Dasboard/Layout';
+import Navbar from '@/components/Dasboard/Navbar';
 
 const Customers = () => {
     const [data, setdata] = useState();
@@ -24,6 +26,7 @@ const Customers = () => {
             console.log(res)
             setdata(res);
             setFilteredData(res)
+            console.log("data is" , data)
         } catch (error) {
             console.log(error)
         }
@@ -130,16 +133,19 @@ const Customers = () => {
 
 
       return (
-        <div>
+        <Layout>
+          <Navbar/>
+          
+        <div className='lg:-mt-10 xl:-mt-10'>
             <CustomerPopup isOpen={popup}  setIsOpen={setpopup} data={editData} seteditData={seteditData} handleEdit={handleEdit} />
           {loading ? <Loader/> :
 
-        <div className='bg-[#191C24] min-h-screen '>
+        <div className=' min-h-screen w-full '>
          
-      <section className={`  sm:p-5  ${sidebar == false ? "ml-0" : "lg:ml-48"}`}>
+      <section className={` `}>
        
-        <h1 className={`text-3xl font-bold  pb-5 text-red-600 ${sidebar == false ? "pl-5" : "pl-20"} `}>Users</h1>
-        <div className="mx-auto max-w-screen-xl px-4">
+        <h1 className={`text-3xl font-bold  pb-5 text-red-600  pt-10 `}>Users</h1>
+        <div className="mx-auto max-w-screen-xl ">
           <div className={`bg-[#1E1E2C]  shadow-md sm:rounded-lg overflow-hidden mx-auto  ${sidebar == false ? "" : "lg:ml-16"}`}>
             <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
               <div className="flex gap-x-6 sm:gap-x-0 sm:grid justify-between w-full md:w-1/2">
@@ -229,6 +235,7 @@ const Customers = () => {
       </section>
       </div>}
       </div>
+      </Layout>
     )
   }
 
