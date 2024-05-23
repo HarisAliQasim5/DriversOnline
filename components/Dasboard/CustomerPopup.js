@@ -3,19 +3,34 @@ import { Dialog, Transition } from "@headlessui/react";
 import { IoClose } from "react-icons/io5";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 
-const CustomerPopup = ({ isOpen , setIsOpen  , data , type , seteditData, handleEdit  , handleAddSubmit  }) => {
+const CustomerPopup = ({
+  isOpen,
+  setIsOpen,
+  data,
+  seteditData,
+  handleEdit
+}) => {
   const cancelButtonRef = useRef(null);
 
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    seteditData((prevdata) => ({
-      ...prevdata,
-      [name]: type === "checkbox" ? checked : value,
+  const handleToggle= (event) => {
+    const updatedBlocked = event.target.checked;
+    seteditData((prevData) => ({
+      ...prevData,
+      blocked: updatedBlocked,
+      blockedMessage: ""
     }));
+    console.log("Check",data)
   };
 
+  const handleBlockedMessage = (event)=>{
+    const updatedBlockedMessage = event.target.value;
+    seteditData((prevData) => ({
+      ...prevData,
+      blockedMessage: updatedBlockedMessage,
+    }));
+  }
 
+  
 
   return (
     <div className="z-50 ">
@@ -50,148 +65,113 @@ const CustomerPopup = ({ isOpen , setIsOpen  , data , type , seteditData, handle
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
                 <Dialog.Panel className="relative transform overflow-hidden rounded-lg  text-left shadow-xl transition-all sm:my-8 sm:w-full   min-w-full sm:max-w-lg sm:min-w-min">
-                  {data && <form  onSubmit={handleEdit} className="bg-gray-800">
-                    <div className="w-full flex flex-col justify-center  py-2 pl-2 bg-slate-900 rounded-se-md rounded-ss-md ">
-                      <span className="flex justify-between pr-5">
-                        <h1 className="font-semibold text-2xl text-red-600">{type == "add" ? "Add New User" : "Edit User"}</h1>
-                        <IoClose
-                          className="text-3xl cursor-pointer text-white"
-                          onClick={() => setIsOpen(false)}
-                        />
-                      </span>
-                    </div>
-                    <div className="px-4 mt-6 space-y-2">
-                      <label
-                        htmlFor="firstName"
-                        className="block text-sm font-medium leading-6 text-white"
-                      >
-                        First Name
-                      </label>
-                      <div className="mt-2 ">
-                        <input
-                          type="text"
-                          name="firstName"
-                          id="firstName"
-                          autoComplete="given-name"
-                          value={data.firstName}
-                          onChange={handleChange}
-                          className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
-                          required
-                        />
+                  {data && (
+                    <form onSubmit={handleEdit} className="bg-[#283045]">
+                      <div className="w-full flex flex-col justify-center  py-2 pl-2 bg-slate-900 rounded-se-md rounded-ss-md ">
+                        <span className="flex justify-between pr-5">
+                          <h1 className="font-semibold text-2xl text-red-600">
+                            Edit
+                          </h1>
+                          <IoClose
+                            className="text-3xl cursor-pointer text-white"
+                            onClick={() => setIsOpen(false)}
+                          />
+                        </span>
                       </div>
-
-                      <label
-                        htmlFor="lastName"
-                        className="block text-sm font-medium leading-6 text-white"
-                      >
-                        Last Name
-                      </label>
-                      <div className="mt-2 ">
-                        <input
-                          type="text"
-                          name="lastName"
-                          id="lastName"
-                          autoComplete="last-name"
-                          value={data.lastName}
-                          onChange={handleChange}
-                          className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
-                          required
-                        />
-                      </div>
-
-                      <label
-                        htmlFor="email"
-                        className="block text-sm font-medium leading-6 text-white"
-                      >
-                        Email
-                      </label>
-                      <div className="mt-2 pb-">
-                        <input
-                          type="email"
-                          name="email"
-                          id="email"
-                          autoComplete="email"
-                          value={data.email}
-                          onChange={handleChange}
-                          className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
-                          required
-                        />
-                      </div>
-
-                      <div className="grid grid-cols-2 gap-x-3">
-                        <div>
-                          <label
-                            htmlFor="type"
-                            className="block text-sm font-medium leading-6 text-white"
-                          >
-                            User Type
-                          </label>
-                          <div className="mt-2">
-                            <select
-                              id="type"
-                              name="type"
+                      <div className="p-4">
+                        <div className="sm:grid sm:grid-cols-2 gap-x-5 my-3 gap-y-3 space-y-2 sm:space-y-0">
+                          <div className="flex flex-col">
+                            <label className="pb-1 text-white">
+                              First Name
+                            </label>
+                            <input
+                              className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 "
+                              type="text"
+                              value={data.firstName}
+                            />
+                          </div>
+                          <div className="flex flex-col">
+                            <label className="pb-1 text-white">Last Name</label>
+                            <input
+                              className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 "
+                              type="text"
+                              value={data.lastName}
+                            />
+                          </div>
+                          <div className="flex flex-col col-span-2">
+                            <label className="pb-1 text-white">Email</label>
+                            <input
+                              className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 "
+                              type="email"
+                              value={data.email}
+                            />
+                          </div>
+                          <div className="flex flex-col">
+                            <label className="pb-1 text-white">Phone No</label>
+                            <input
+                              className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 "
+                              type="text"
+                              value={data.phone}
+                            />
+                          </div>
+                          <div className="flex flex-col">
+                            <label className="pb-1 text-white">Gender</label>
+                            <input
+                              className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 "
+                              type="text"
+                              value={data.gender}
+                            />
+                          </div>
+                          <div className="flex flex-col">
+                            <label className="pb-1 text-white">Type</label>
+                            <input
+                              className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 "
+                              type="text"
                               value={data.type}
-                              onChange={handleChange}
-                              required
-                              className="block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300  sm:text-sm sm:leading-6"
-                            >
-                              <option value="customer">Customer</option>
-                            </select>
+                            />
                           </div>
-                        </div>
-                        <div className="flex flex-col justify-end">
-                          <div className="flex gap-x-5 items-center">
-                            <label
-                              htmlFor="gender"
-                              className="block text-sm font-medium leading-6 text-white"
-                            >
-                              Gender
-                            </label>
-                            <div className="mt-2 pb-">
-                        <input
-                          type="text"
-                          name="gender"
-                          id="gender"
-                          autoComplete="gender"
-                          value={data.gender}
-                          onChange={handleChange}
-                          className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
-                          required
-                        />
-                      </div>
-
-                      <label
-                              htmlFor="blocked"
-                              className="block text-sm font-medium leading-6 text-white"
-                            >
-                              blocked
-                            </label>
-                            <div className="mt-2 pb-">
-                        <input
-                          type="checkbox"
-                          name="blocked"
-                          id="blocked"
-                          checked={data.blocked}
-                          onChange={handleChange}
-                          className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
-                          required
-                        />
-                      </div>
-
+                          <div className="flex flex-col">
+                            <label className="pb-1 text-white">Verified</label>
+                            <input
+                              className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 "
+                              type="text"
+                              value={data.verified}
+                            />
                           </div>
+                          <div className="flex flex-col">
+                            <label className="pb-1 text-white ">Blocked</label>
+                            <label className="relative inline-flex items-center cursor-pointer">
+                              <input
+                                type="checkbox"
+                                checked={data.blocked}
+                                className="sr-only peer"
+                                onChange={handleToggle}
+                              />
+                              <div className="group peer ring-0 bg-gradient-to-tr from-rose-100 via-rose-400 to-rose-500 rounded-full outline-none duration-300 after:duration-300 w-16 h-7 shadow-md peer-checked:bg-emerald-500 peer-focus:outline-none after:rounded-full after:absolute after:bg-gray-50 after:outline-none after:h-5 after:w-5 after:top-1 after:left-1 after:-rotate-180 after:flex after:justify-center after:items-center peer-checked:after:translate-x-9 peer-hover:after:scale-95 peer-checked:after:rotate-0 peer-checked:bg-gradient-to-tr peer-checked:from-green-100 peer-checked:via-lime-400 peer-checked:to-lime-500"></div>
+                            </label>
+                          </div>
+                          {data?.blocked && 
+                          <div className="flex flex-col col-span-2">
+                            <label className="pb-1 text-white">Message</label>
+                            <textarea rows={5}
+                            value={data.blockedMessage}
+                            onChange={handleBlockedMessage}
+                              className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 "/>
+                          </div>}
                         </div>
                       </div>
-                    </div>
-                    <div className="flex justify-center gap-x-4 mt-4 mb-4 pb-5 sm:pb-8">
-                      <button
-                        className="bg-blue-600 text-white px-5 py-2 rounded-md"
-                        type="submit"
-                      >
-                        Submit
-                      </button>
-              
-                    </div>
-                  </form>}
+
+                      <div className="flex justify-center gap-x-4 mt-4 mb-4 pb-5 sm:pb-8">
+                        <button
+                          className="bg-blue-600 text-white px-5 py-2 rounded-md"
+                          type="submit"
+                          onClick={handleEdit}
+                        >
+                          Update
+                        </button>
+                      </div>
+                    </form>
+                  )}
                 </Dialog.Panel>
               </Transition.Child>
             </div>
@@ -200,7 +180,6 @@ const CustomerPopup = ({ isOpen , setIsOpen  , data , type , seteditData, handle
       </Transition.Root>
     </div>
   );
-}
-
+};
 
 export default CustomerPopup;

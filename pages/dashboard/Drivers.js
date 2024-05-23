@@ -3,21 +3,23 @@ import getRecords from '@/firebase/getRecords';
 import { HiOutlineRefresh } from "react-icons/hi";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-// import { toast } from 'react-toastify';
-import Loader from '@/components/Loader';
-import CustomerPopup from '@/components/Dasboard/CustomerPopup';
+import Loader from '@/components/Dasboard/Loader';
 import updateRecord from '@/firebase/updateRecord';
 import deleteById from '@/firebase/deleteById';
 import Layout from '@/components/Dasboard/Layout';
 import Navbar from '@/components/Dasboard/Navbar';
 import Link from 'next/link';
+import { ToastContainer, toast } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css';
+
+
 const Drivers = () => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [popup, setpopup] = useState(false);
   const [editData, seteditData] = useState();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [type, settype] = useState();
 
   useEffect(() => {
@@ -27,19 +29,32 @@ const Drivers = () => {
   const fetchData = async () => {
     try {
       const res = await getRecords('drivers');
+      setLoading(true)
       if (res) {
         console.log('Response:', res);
         setData(res);
         setFilteredData(res);
         console.log('Data:', data);
+        setLoading(false)
       }
     } catch (error) {
+      setLoading(false)
       console.log(error);
     }
   };
 
   const handleRefresh = async () => {
-    // toast here
+    toast.info("Refreshed", {
+      position: "top-right",
+      type: "success",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "dark",
+  });
+  setLoading(true);
     await fetchData();
   };
 
@@ -57,67 +72,58 @@ const Drivers = () => {
 
 
 
-  // const handleUpdate = (data) =>{
-  //     settype("edit");
-  //     seteditData({
-  //         blocked: data.data.blocked,
-  //         blockedMessage: data.data.blockedMessage,
-  //         createdAt: data.data.createdAt,
-  //         email: data.data.email,
-  //         fcmToken: data.data.fcmToken,
-  //         firstName: data.data.firstName,
-  //         gender: data.data.gender,
-  //         lastName: data.data.lastName,
-  //         phone: data.data.phone,
-  //         profileImage: data.data.profileImage,
-  //         type: data.data.type,
-  //         updatedAt: data.data.updatedAt,
-  //         userId: data.data.userId,
-  //         verified: data.data.verified,
-  //         id : data.key
-  //       })
-  //     setpopup(true)
-  // }
+  
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
   };
 
-  const handleEdit = async (e) => {
-      e.preventDefault();
-      try {
-        const result = await updateRecord("customers", editData.userId, {
-          blocked: editData.blocked,
-          blockedMessage: editData.blockedMessage,
-          createdAt: editData.createdAt,
-          email: editData.email,
-          fcmToken: editData.fcmToken,
-          firstName: editData.firstName,
-          gender: editData.gender,
-          lastName: editData.lastName,
-          phone: editData.phone,
-          profileImage: editData.profileImage,
-          type: editData.type,
-          updatedAt: editData.updatedAt,
-          userId: editData.userId,
-          verified: editData.verified,
-        });
-        console.log("Record updated successfully", result);
-      } catch (err) {
-        console.error("Error updating record:", err);
-      }
-    };
+  
 
 
       const handelDelete = async (id) =>{
           try {
-              const result = await deleteById("customers", id);
+            setLoading(true)
+              const result = await deleteById("drivers", id);
               if (result) {
-                  //toast
-                  await fetchData()
+                toast.info("Deleted Successfully", {
+                  position: "top-right",
+                  type: "success",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  theme: "dark",
+              });
+                await fetchData()
                 console.log("Document deleted successfully");
               }
+              else{
+                setLoading(false)
+                toast.info("Driver Not Found", {
+                  position: "top-right",
+                  type: "error",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  theme: "dark",
+              });
+              }
             } catch (error) {
+              setLoading(false)
+              toast.info("Error Occurred", {
+                position: "top-right",
+                type: "error",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                theme: "dark",
+            });
               console.error("Error deleting document:", error);
             }
       }
@@ -126,6 +132,7 @@ const Drivers = () => {
   return (
     <Layout>
           <Navbar/>
+          <ToastContainer />
           
         <div className='lg:-mt-10 xl:-mt-10 p-4 lg:p-0'>
           {loading ? <Loader/> :
@@ -152,14 +159,14 @@ const Drivers = () => {
                     </form>
                     <HiOutlineRefresh  onClick={handleRefresh} className='w-5 h-5 text-white cursor-pointer sm:hidden mt-2' />
                 </div>
-                <div className="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
+                <div className="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0 bg-[#171C30] p-2 rounded-xl">
                 <HiOutlineRefresh   onClick={handleRefresh} className='w-5 h-5 text-white cursor-pointer hidden sm:flex' />
-                    <button   type="button" className="flex items-center justify-center text-white bg-blue-600 font-medium rounded-lg text-sm px-4 py-2 ">
+                    {/* <button   type="button" className="flex items-center justify-center text-white bg-blue-600 font-medium rounded-lg text-sm px-4 py-2 ">
                         <svg className="h-3.5 w-3.5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <path clipRule="evenodd" fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
                         </svg>
                         Add User
-                    </button>
+                    </button> */}
 
                 </div>
             </div>
@@ -209,7 +216,7 @@ const Drivers = () => {
         <td className="px-4 py-3"><img className='w-5' src="../../images/delete.png" alt="he" /></td> }
         <td className="px-4 py-3 flex items-center justify-end gap-x-2">
         <Link href={"/drivers/edit/" + data.data.driverId}><FaRegEdit className='w-5 h-5'/></Link> 
-            <MdDelete className='w-5 h-5 text-red-600'     onClick={() =>handelDelete(data._id)} />
+        <MdDelete className='w-5 h-5 text-red-600'     onClick={() =>handelDelete(data._id)} />
         </td>
       </tr>
     ))
