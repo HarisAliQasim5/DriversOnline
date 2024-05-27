@@ -9,10 +9,13 @@ import AboutNumbers from '@/components/About/AboutNumbers'
 import AboutPageCards from '@/components/About/AboutPageCards'
 import AboutValues from '@/components/About/AboutValues'
 import Footer from '@/components/layoutScreen/Footer'
+import Navbar from '@/components/layoutScreen/Navbar'
 import React from 'react'
 
 const about = () => {
   return (
+    <>
+    <Navbar/>
     <div>
       <AboutBanner/>
       <AboutChooseUs/>
@@ -28,6 +31,7 @@ const about = () => {
       
       {/* <AboutPageCards/> */}
     </div>
+    </>
   )
 }
 

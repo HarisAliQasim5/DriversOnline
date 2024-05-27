@@ -16,12 +16,15 @@ import HomeFact from '@/components/HomePage/HomeFact';
 import HomeRating from '@/components/HomePage/HomeRating';
 import HomeDrivers from '@/components/HomePage/HomeDrivers';
 import Footer from '@/components/layoutScreen/Footer';
+import Navbar from '@/components/layoutScreen/Navbar';
 
 export default function Home() {
   const { darkMode } = useDarkMode();
   const { language } = useLanguage();
 
   return (
+    <>
+    <Navbar/>
     <div className={`${darkMode ? "bg-[#171C30] text-white " : "bg-white text-black "} overflow-x-hidden `}>
       
       <Swiper/>
@@ -42,7 +45,9 @@ export default function Home() {
       <Testimonials/>
       <DownloadApp/>  
       <Footer/>
+      
 
     </div>
+    </>
   );
 }

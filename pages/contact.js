@@ -8,17 +8,22 @@ import Login from '@/components/Login';
 import Sample from '@/components/Sample';
 import AboutSection from '@/components/About/AboutSection';
 import Footer from '@/components/layoutScreen/Footer';
+import Navbar from '@/components/layoutScreen/Navbar';
 
 const contact = () => {
   const { darkMode } = useDarkMode();
     const { language } = useLanguage();
   return (
+    <>
+    <Navbar/>
     <div className={` ${darkMode ? "bg-dark" : ""}`}>
       <ContactBanner/>
       <ContactBox/>
       <ContactForm/>
-      <Footer/>
+      
     </div>
+    <Footer/>
+    </>
   )
 }
 
