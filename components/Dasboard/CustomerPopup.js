@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { IoClose } from "react-icons/io5";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
+import { useDarkMode } from "../ContextFiles/DarkModeContext";
 
 const CustomerPopup = ({
   isOpen,
@@ -11,6 +12,7 @@ const CustomerPopup = ({
   handleEdit
 }) => {
   const cancelButtonRef = useRef(null);
+  const { darkMode } = useDarkMode();
 
   const handleToggle= (event) => {
     const updatedBlocked = event.target.checked;
@@ -66,10 +68,10 @@ const CustomerPopup = ({
               >
                 <Dialog.Panel className="relative transform overflow-hidden rounded-lg  text-left shadow-xl transition-all sm:my-8 sm:w-full   min-w-full sm:max-w-lg sm:min-w-min">
                   {data && (
-                    <form onSubmit={handleEdit} className="bg-[#283045]">
-                      <div className="w-full flex flex-col justify-center  py-2 pl-2 bg-slate-900 rounded-se-md rounded-ss-md ">
+                    <form onSubmit={handleEdit} className={`${darkMode ? "bg-[#283045]" : "bg-white"}`}>
+                      <div className={`w-full flex flex-col justify-center  py-2 pl-2 ${darkMode ? "bg-slate-900" : "bg-black"} rounded-se-md rounded-ss-md `}>
                         <span className="flex justify-between pr-5">
-                          <h1 className="font-semibold text-2xl text-red-600">
+                          <h1 className="font-semibold text-2xl text-purple md:pl-4">
                             Edit
                           </h1>
                           <IoClose
@@ -81,65 +83,65 @@ const CustomerPopup = ({
                       <div className="p-4">
                         <div className="sm:grid sm:grid-cols-2 gap-x-5 my-3 gap-y-3 space-y-2 sm:space-y-0">
                           <div className="flex flex-col">
-                            <label className="pb-1 text-white">
+                            <label className={`pb-1 ${darkMode ? "text-white" : "text-black"}`}>
                               First Name
                             </label>
                             <input
-                              className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 "
+                              className={`${darkMode ? "bg-[#283045] border-gray-500 text-gray-300" : "bg-gray-100 text-gray-600"} border p-1 rounded-md px-2   `}
                               type="text"
                               value={data.firstName}
                             />
                           </div>
                           <div className="flex flex-col">
-                            <label className="pb-1 text-white">Last Name</label>
+                            <label className={`pb-1 ${darkMode ? "text-white" : "text-black"}`}>Last Name</label>
                             <input
-                              className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 "
+                              className={`${darkMode ? "bg-[#283045] border-gray-500 text-gray-300" : "bg-gray-100 text-gray-600"} border p-1 rounded-md px-2   `}
                               type="text"
                               value={data.lastName}
                             />
                           </div>
                           <div className="flex flex-col col-span-2">
-                            <label className="pb-1 text-white">Email</label>
+                            <label className={`pb-1 ${darkMode ? "text-white" : "text-black"}`}>Email</label>
                             <input
-                              className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 "
+                              className={`${darkMode ? "bg-[#283045] border-gray-500 text-gray-300" : "bg-gray-100 text-gray-600"} border p-1 rounded-md px-2   `}
                               type="email"
                               value={data.email}
                             />
                           </div>
                           <div className="flex flex-col">
-                            <label className="pb-1 text-white">Phone No</label>
+                            <label className={`pb-1 ${darkMode ? "text-white" : "text-black"}`}>Phone No</label>
                             <input
-                              className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 "
+                              className={`${darkMode ? "bg-[#283045] border-gray-500 text-gray-300" : "bg-gray-100 text-gray-600"} border p-1 rounded-md px-2   `}
                               type="text"
                               value={data.phone}
                             />
                           </div>
                           <div className="flex flex-col">
-                            <label className="pb-1 text-white">Gender</label>
+                            <label className={`pb-1 ${darkMode ? "text-white" : "text-black"}`}>Gender</label>
                             <input
-                              className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 "
+                              className={`${darkMode ? "bg-[#283045] border-gray-500 text-gray-300" : "bg-gray-100 text-gray-600"} border p-1 rounded-md px-2   `}
                               type="text"
                               value={data.gender}
                             />
                           </div>
                           <div className="flex flex-col">
-                            <label className="pb-1 text-white">Type</label>
+                            <label className={`pb-1 ${darkMode ? "text-white" : "text-black"}`}>Type</label>
                             <input
-                              className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 "
+                              className={`${darkMode ? "bg-[#283045] border-gray-500 text-gray-300" : "bg-gray-100 text-gray-600"} border p-1 rounded-md px-2   `}
                               type="text"
                               value={data.type}
                             />
                           </div>
                           <div className="flex flex-col">
-                            <label className="pb-1 text-white">Verified</label>
+                            <label className={`pb-1 ${darkMode ? "text-white" : "text-black"}`}>Verified</label>
                             <input
-                              className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 "
+                             className={`${darkMode ? "bg-[#283045] border-gray-500 text-gray-300" : "bg-gray-100 text-gray-600"} border p-1 rounded-md px-2   `}
                               type="text"
                               value={data.verified}
                             />
                           </div>
                           <div className="flex flex-col">
-                            <label className="pb-1 text-white ">Blocked</label>
+                            <label className={`pb-1 ${darkMode ? "text-white" : "text-black"}`}>Blocked</label>
                             <label className="relative inline-flex items-center cursor-pointer">
                               <input
                                 type="checkbox"
@@ -152,11 +154,11 @@ const CustomerPopup = ({
                           </div>
                           {data?.blocked && 
                           <div className="flex flex-col col-span-2">
-                            <label className="pb-1 text-white">Message</label>
+                            <label className={`pb-1 ${darkMode ? "text-white" : "text-black"}`}>Message</label>
                             <textarea rows={5}
                             value={data.blockedMessage}
                             onChange={handleBlockedMessage}
-                              className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 "/>
+                            className={`${darkMode ? "bg-[#283045] border-gray-500 text-gray-300" : "bg-gray-100 text-gray-600"} border p-1 rounded-md px-2   `}/>
                           </div>}
                         </div>
                       </div>

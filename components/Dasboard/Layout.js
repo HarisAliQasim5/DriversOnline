@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import Sidebar from './Sidebar';
-import Navbar from './Navbar';
 import { GlobalContext } from '@/context';
+import { useDarkMode } from "../ContextFiles/DarkModeContext";
 
 const Layout = ({ children }) => {
   const { isSidebarOpen, isOpen , toggleOpen, toggleSidebar } = useContext(GlobalContext);
+  const { darkMode, toggleDarkMode } = useDarkMode();
 
   return (
-    <div className='flex flex-row h-screen  bg-[#171C30]'>
+    <div className={`flex flex-row h-screen ${darkMode ? "bg-[#171C30]" : "bg-gray-200"} `}>
       
       <Sidebar/>
       {/* <div className={`relative flex-col overflow-y-auto `}>

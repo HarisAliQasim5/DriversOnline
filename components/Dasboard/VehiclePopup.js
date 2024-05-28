@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { IoClose } from "react-icons/io5";
+import { useDarkMode } from "../ContextFiles/DarkModeContext";
 const VehiclePopup = ({
   isOpen,
   setIsOpen,
@@ -19,6 +20,7 @@ const VehiclePopup = ({
     }));
   };
   const cancelButtonRef = useRef(null);
+  const { darkMode } = useDarkMode();
 
   return (
     <div className="z-50">
@@ -54,8 +56,8 @@ const VehiclePopup = ({
               >
                 <Dialog.Panel className="relative transform overflow-hidden rounded-lg  text-left shadow-xl transition-all sm:my-8 sm:w-full   min-w-full sm:max-w-lg sm:min-w-min">
                   <div className="mt-2">
-                    <form onSubmit={type == "add" ? handleSubmit : handleEdit} className="bg-[#283045]">
-                      <div className="w-full flex flex-col justify-center  py-2 pl-2 bg-slate-900 rounded-se-md rounded-ss-md ">
+                    <form onSubmit={type == "add" ? handleSubmit : handleEdit}  className={`${darkMode ? "bg-[#283045]" : "bg-white"}`}>
+                      <div className={`w-full flex flex-col justify-center  py-2 pl-2 ${darkMode ? "bg-slate-900" : "bg-black"}   `}>
                         <span className="flex justify-between pr-5">
                           <h1 className="font-semibold text-2xl text-red-600">
                           {type == "add" ? "Add New Vehicle" : "Edit Vehicle"}
@@ -70,7 +72,7 @@ const VehiclePopup = ({
                       <div className="mb-4">
                         <label
                           htmlFor="type"
-                          className="block text-white text-sm font-bold mb-2"
+                          className={`block ${darkMode ?  "text-white" : "text-black"} text-md  mb-2`}
                         >
                           Type
                         </label>
@@ -79,14 +81,14 @@ const VehiclePopup = ({
                           name="type"
                           value={vehicleData.type}
                           onChange={handleChange}
-                          className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 w-full "
+                          className={` border  p-1 rounded-md px-2    w-full ${darkMode ? "text-gray-300 bg-[#283045] border-gray-500" : "bg-gray-100 text-gray-600"} `}
                           required
                         />
                       </div>
                       <div className="mb-4">
                         <label
                           htmlFor="pricePerKm"
-                          className="block text-white text-sm font-bold mb-2"
+                          className={`block ${darkMode ?  "text-white" : "text-black"} text-md  mb-2`}
                         >
                           Price Per Km
                         </label>
@@ -95,14 +97,14 @@ const VehiclePopup = ({
                           name="pricePerKm"
                           value={vehicleData.pricePerKm}
                           onChange={handleChange}
-                          className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 w-full "
+                          className={` border  p-1 rounded-md px-2    w-full ${darkMode ? "text-gray-300 bg-[#283045] border-gray-500" : "bg-gray-100 text-gray-600"} `}
                           required
                         />
                       </div>
                       <div className="mb-4">
                         <label
                           htmlFor="seats"
-                          className="block text-white text-sm font-bold mb-2"
+                          className={`block ${darkMode ?  "text-white" : "text-black"} text-md  mb-2`}
                         >
                           Seats
                         </label>
@@ -111,14 +113,14 @@ const VehiclePopup = ({
                           name="seats"
                           value={vehicleData.seats}
                           onChange={handleChange}
-                          className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 w-full "
+                          className={` border  p-1 rounded-md px-2    w-full ${darkMode ? "text-gray-300 bg-[#283045] border-gray-500" : "bg-gray-100 text-gray-600"} `}
                           required
                         />
                       </div>
                       <div className="mb-4">
                         <label
                           htmlFor="imageUrl"
-                          className="block text-white text-sm font-bold mb-2"
+                          className={`block ${darkMode ?  "text-white" : "text-black"} text-md  mb-2`}
                         >
                           Image URL
                         </label>
@@ -127,7 +129,7 @@ const VehiclePopup = ({
                           name="imageUrl"
                           value={vehicleData.imageUrl}
                           onChange={handleChange}
-                          className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 w-full "
+                          className={` border  p-1 rounded-md px-2    w-full ${darkMode ? "text-gray-300 bg-[#283045] border-gray-500" : "bg-gray-100 text-gray-600"} `}
                         />
                       </div>
                       <div className="flex items-center justify-center gap-x-4 mt-10 mb-4 ">

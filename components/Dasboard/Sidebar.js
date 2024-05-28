@@ -7,6 +7,7 @@ import { FiUsers } from "react-icons/fi";
 import { MdHistory } from "react-icons/md";
 import { BsCash } from "react-icons/bs";
 import { IoHome } from "react-icons/io5";
+import { useDarkMode } from "../ContextFiles/DarkModeContext";
 const Data = [
   {
     icon: LuLayoutDashboard,
@@ -37,10 +38,11 @@ const Data = [
 
 const Sidebar = () => {
   const { isSidebarOpen, isOpen , toggleOpen, toggleSidebar } = useContext(GlobalContext);
+  const { darkMode, toggleDarkMode } = useDarkMode();
   
   return (
     
-    <div className={`${isSidebarOpen ? "w-64" : "w-20"} ${isOpen ? "" : "hidden"} fixed lg:relative transition-all duration-300 bg-[#283045] h-screen pt-8 p-5 z-10 `}>
+    <div className={`${isSidebarOpen ? "w-64" : "w-20"} ${isOpen ? "" : "hidden"} fixed lg:relative transition-all duration-300 ${darkMode ? "bg-[#283045] ": "bg-white"} h-screen pt-8 p-5 z-10 `}>
       <div className='relative z-30 lg:flex hidden'>
         {isSidebarOpen ? (
           <BsArrowLeftCircle
@@ -70,20 +72,20 @@ const Sidebar = () => {
       </div>
 
 
-      <div className='inline-flex -mt-2'>
-        <IoHome className={`text-white  text-4xl rounded cursor-pointer block float-left mr-2 duration-300 ${isSidebarOpen && "rotate-[360deg]"}`} />
+      <div className={`inline-flex -mt-2 ${darkMode ? "text-white" : "text-black"}`}>
+        <IoHome className={`  text-4xl rounded cursor-pointer block float-left mr-2 duration-300 ${isSidebarOpen && "rotate-[360deg]"}`} />
         <div className='flex flex-col justify-center'>
-        <h1 className={`text-white origin-left font-medium text-2xl duration-300 ${!isSidebarOpen && "scale-0"}`}>DriversOnline</h1>
+        <h1 className={` origin-left font-medium text-2xl duration-300 ${!isSidebarOpen && "scale-0"}`}>DriversOnline</h1>
         </div>
         
       </div>
       <div className='lg:mt-10'>
         {Data.map((item, index) => (
-          <div key={index} className={`flex ${isSidebarOpen ? "hover:bg-red-600" : "justify-center "} mt-5  p-1 rounded-xl`}>
+          <div key={index} className={`flex ${isSidebarOpen ? "hover:bg-purple" : "justify-center "}  ${darkMode ? "text-white" : "text-black"} mt-5  p-1 rounded-xl`}>
             <div className='flex flex-col justify-center'>
-              <item.icon className={`text-white text-2xl rounded cursor-pointer block float-left mr-2 duration-300 ${isSidebarOpen && "rotate-[360deg]"}`} />
+              <item.icon className={` text-2xl rounded cursor-pointer block float-left mr-2 duration-300 ${isSidebarOpen && "rotate-[360deg]"}`} />
             </div>
-            <h1 className={`text-white origin-left text-lg duration-300 ${!isSidebarOpen && "hidden"}`}>{item.title}</h1>
+            <h1 className={` origin-left text-lg duration-300 ${!isSidebarOpen && "hidden"}`}>{item.title}</h1>
           </div>
         ))}
       </div>

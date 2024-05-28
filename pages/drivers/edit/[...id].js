@@ -8,11 +8,12 @@ import Navbar from "@/components/Dasboard/Navbar";
 import ImagePreviewPopup from "@/components/Dasboard/ImagePreviewPopup";
 import { ToastContainer, toast } from 'react-toastify'; 
 import 'react-toastify/dist/ReactToastify.css';
+import { useDarkMode } from "@/components/ContextFiles/DarkModeContext";
 
 const EditDrivers = () => {
   const router = useRouter();
   const { id } = router.query;
-  
+  const { darkMode } = useDarkMode();
   const [data, setData] = useState(null);
   const [img , setImg] = useState();
   const [popup, setpopup] = useState(false);
@@ -117,40 +118,40 @@ const EditDrivers = () => {
      (<div>
         <ImagePreviewPopup isOpen={popup}  setIsOpen={setpopup} image={img}/>
         <h1 className={`text-3xl font-bold  pb-5 text-red-600   `}>Edit Drivers</h1>
-        <div className="bg-[#283045] p-3 rounded-lg">
+        <div className={`${darkMode ? "bg-[#283045]" : "bg-white"} p-3 rounded-lg`}>
          <h1 className={`text-2xl font-bold  pb-5 text-purple    `}>Personal Info</h1>
         <div className="grid grid-cols-2 gap-x-5 my-3 gap-y-3">
             <div className="flex flex-col">
-            <label className="pb-1 text-white">Name</label>
-            <input className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 " type="text" value={data.fullName}/>
+            <label className={`pb-1 ${darkMode ? "text-white" : "text-black"}`}>Name</label>
+            <input className={`${darkMode ? "bg-[#283045] border-gray-500 text-gray-300" : "bg-gray-100 text-gray-600"} border p-1 rounded-md px-2 `} type="text" value={data.fullName}/>
             </div>
             <div className="flex flex-col">
-            <label className="pb-1 text-white">Email</label>
-            <input className="bg-[#283045] border border-gray-500 p-1 px-2 rounded-md text-gray-300" type="email" value={data.email} />
+            <label className={`pb-1 ${darkMode ? "text-white" : "text-black"}`}>Email</label>
+            <input className={`${darkMode ? "bg-[#283045] border-gray-500 text-gray-300" : "bg-gray-100 text-gray-600"} border p-1 rounded-md px-2 `} type="email" value={data.email} />
             </div>
             <div className="flex flex-col">
-            <label className="pb-1 text-white">Phone No</label>
-            <input className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 " type="text" value={data.mobileNumber}/>
+            <label className={`pb-1 ${darkMode ? "text-white" : "text-black"}`}>Phone No</label>
+            <input  className={`${darkMode ? "bg-[#283045] border-gray-500 text-gray-300" : "bg-gray-100 text-gray-600"} border p-1 rounded-md px-2 `} type="text" value={data.mobileNumber}/>
             </div>
             <div className="flex flex-col">
-            <label className="pb-1 text-white">Secondary Phone No</label>
-            <input className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 " type="text" value={data.alternatePhone}/>
+            <label className={`pb-1 ${darkMode ? "text-white" : "text-black"}`}>Secondary Phone No</label>
+            <input className={`${darkMode ? "bg-[#283045] border-gray-500 text-gray-300" : "bg-gray-100 text-gray-600"} border p-1 rounded-md px-2 `} type="text" value={data.alternatePhone}/>
             </div>
             <div className="flex flex-col">
-            <label className="pb-1 text-white">ID Card No</label>
-            <input className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 " type="text" value={data.idCardNumber}/>
+            <label className={`pb-1 ${darkMode ? "text-white" : "text-black"}`}>ID Card No</label>
+            <input className={`${darkMode ? "bg-[#283045] border-gray-500 text-gray-300" : "bg-gray-100 text-gray-600"} border p-1 rounded-md px-2 `} type="text" value={data.idCardNumber}/>
             </div>
             <div className="flex flex-col">
-            <label className="pb-1 text-white">License No</label>
-            <input className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 " type="text" value={data.licenseNumber}/>
+            <label className={`pb-1 ${darkMode ? "text-white" : "text-black"}`}>License No</label>
+            <input className={`${darkMode ? "bg-[#283045] border-gray-500 text-gray-300" : "bg-gray-100 text-gray-600"} border p-1 rounded-md px-2 `} type="text" value={data.licenseNumber}/>
             </div>
             <div className="flex flex-col">
-            <label className="pb-1 text-white">Language</label>
-            <input className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 " type="text" value={data.language}/>
+            <label className={`pb-1 ${darkMode ? "text-white" : "text-black"}`}>Language</label>
+            <input className={`${darkMode ? "bg-[#283045] border-gray-500 text-gray-300" : "bg-gray-100 text-gray-600"} border p-1 rounded-md px-2 `} type="text" value={data.languages}/>
             </div>
             <div className="flex flex-col">
-            <label className="pb-1 text-white">Gender</label>
-            <input className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 " type="text" value={data.selectedGender}/>
+            <label className={`pb-1 ${darkMode ? "text-white" : "text-black"}`}>Gender</label>
+            <input className={`${darkMode ? "bg-[#283045] border-gray-500 text-gray-300" : "bg-gray-100 text-gray-600"} border p-1 rounded-md px-2 `} type="text" value={data.gender}/>
             </div>
             {/* <div>
               <label className={`text-white ${data.verified ? "text-green" : "text-red-600"} `}>Verified</label>
@@ -166,7 +167,7 @@ const EditDrivers = () => {
             </div> */}
             <div className="flex gap-x-8">
             <div className="flex flex-col">
-                <label className="pb-1 text-white ">Verified</label>
+                <label className={`pb-1 ${darkMode ? "text-white" : "text-black"}`}>Verified</label>
                 <label className="relative inline-flex items-center cursor-pointer">
                   <input 
                     type="checkbox" 
@@ -178,7 +179,7 @@ const EditDrivers = () => {
                 </label>
               </div>
               <div className="flex flex-col">
-                <label className="pb-1 text-white ">Blocked</label>
+                <label className={`pb-1 ${darkMode ? "text-white" : "text-black"}`}>Blocked</label>
                 <label className="relative inline-flex items-center cursor-pointer">
                   <input 
                     type="checkbox" 
@@ -195,24 +196,24 @@ const EditDrivers = () => {
             
         </div>
      </div>
-     <div className="mt-10 bg-[#283045] p-3 rounded-lg">
+     <div className={`mt-10 ${darkMode ? "bg-[#283045]" : "bg-white"} p-3 rounded-lg`}>
         <div className="grid grid-cols-2 gap-x-5">
             <div className=" p-3 ">
-                <h1 className="pb-4 text-white text-xl font-bold">ID Card Front</h1>
+                <h1 className={`pb-4 ${darkMode ?"text-white" :"text-black"} text-xl font-bold`}>ID Card Front</h1>
                 <img src={data.idCardFrontUrl} alt="" className="h-[250px] w-full object-center pb-2 rounded-md" onClick={()=>{
                     setImg(data.idCardFrontUrl)
                     setpopup(true)
                 }} />
             </div>
             <div className=" p-3 ">
-                <h1 className="pb-4 text-white text-xl font-bold">ID Card Back</h1>
+                <h1 className={`pb-4 ${darkMode ?"text-white" :"text-black"} text-xl font-bold`}>ID Card Back</h1>
                 <img src={data.idCardBackUrl} alt="" className="h-[250px] w-full object-center pb-2 rounded-md" onClick={()=>{
                     setImg(data.idCardBackUrl)
                     setpopup(true)
                 }}/>
             </div>
             <div className=" p-3 ">
-                <h1 className="pb-4 text-white text-xl font-bold">License Front</h1>
+                <h1 className={`pb-4 ${darkMode ?"text-white" :"text-black"} text-xl font-bold`}>License Front</h1>
                 <img src={data.licenseFrontUrl} alt="" className="h-[250px] w-full object-center pb-2 rounded-md" onClick={()=>{
                     setImg(data.licenseFrontUrl)
                     setpopup(true)
@@ -220,7 +221,7 @@ const EditDrivers = () => {
             </div>
             {data.profileImageUrl &&
             <div className=" p-3 ">
-                <h1 className="pb-4 text-white text-xl font-bold">Profile Image</h1>
+                <h1 className={`pb-4 ${darkMode ?"text-white" :"text-black"} text-xl font-bold`}>Profile Image</h1>
                 <img src={data.profileImageUrl} alt="" className="h-[250px] w-full object-center pb-2 rounded-md" onClick={()=>{
                     setImg(data.profileImageUrl)
                     setpopup(true)
@@ -229,28 +230,28 @@ const EditDrivers = () => {
 
         </div>
      </div>
-     <div className="bg-[#283045] p-3 rounded-lg mt-10">
+     <div className={` ${darkMode ? "bg-[#283045]" : "bg-white"} p-3 rounded-lg mt-10`}>
          <h1 className={`text-2xl font-bold  pb-5 text-purple    `}>Vehicle Info</h1>
         <div className="grid grid-cols-2 gap-x-5 my-3 gap-y-3">
             <div className="flex flex-col">
-            <label className="pb-1 text-white">Vehicle Name</label>
-            <input className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 " type="text" value={data.vehicleName}/>
+            <label className={`pb-1 ${darkMode ? "text-white" : "text-black"}`}>Vehicle Name</label>
+            <input  className={`${darkMode ? "bg-[#283045] border-gray-500 text-gray-300" : "bg-gray-100 text-gray-600"} border p-1 rounded-md px-2 `} type="text" value={data.vehicleInfo.name}/>
             </div>
             <div className="flex flex-col">
-            <label className="pb-1 text-white">Vehicle Type</label>
-            <input className="bg-[#283045] border border-gray-500 p-1 px-2 rounded-md text-gray-300" type="text" value={data.vehicleType} />
+            <label className={`pb-1 ${darkMode ? "text-white" : "text-black"}`}>Vehicle Type</label>
+            <input  className={`${darkMode ? "bg-[#283045] border-gray-500 text-gray-300" : "bg-gray-100 text-gray-600"} border p-1 rounded-md px-2 `} type="text" value={data.vehicleInfo.vehicleType} />
             </div>
             <div className="flex flex-col">
-            <label className="pb-1 text-white">Vehicle Model</label>
-            <input className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 " type="text" value={data.vehicleModel}/>
+            <label className={`pb-1 ${darkMode ? "text-white" : "text-black"}`}>Vehicle Model</label>
+            <input className={`${darkMode ? "bg-[#283045] border-gray-500 text-gray-300" : "bg-gray-100 text-gray-600"} border p-1 rounded-md px-2 `} type="text" value={data.vehicleInfo.model}/>
             </div>
             <div className="flex flex-col">
-            <label className="pb-1 text-white">Plate No</label>
-            <input className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 " type="text" value={data.plateNumber}/>
+            <label className={`pb-1 ${darkMode ? "text-white" : "text-black"}`}>Plate No</label>
+            <input className={`${darkMode ? "bg-[#283045] border-gray-500 text-gray-300" : "bg-gray-100 text-gray-600"} border p-1 rounded-md px-2 `} type="text" value={data.vehicleInfo.plateNumber}/>
             </div>
             <div className="flex flex-col">
-            <label className="pb-1 text-white">No of Seats</label>
-            <input className="bg-[#283045] border border-gray-500 p-1 rounded-md px-2   text-gray-300 " type="text" value={data.numOfSeats}/>
+            <label className={`pb-1 ${darkMode ? "text-white" : "text-black"}`}>No of Seats</label>
+            <input className={`${darkMode ? "bg-[#283045] border-gray-500 text-gray-300" : "bg-gray-100 text-gray-600"} border p-1 rounded-md px-2 `} type="text" value={data.vehicleInfo.numOfSeats}/>
             </div>
             <div className="col-span-2 mt-5">
                 <div className="grid grid-cols-2 gap-x-5">

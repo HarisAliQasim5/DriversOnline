@@ -15,6 +15,9 @@ import React from 'react'
 const about = () => {
   return (
     <>
+     <div className="fixed bottom-0 -right-2 sm:right-0 z-50 ">
+        <img src="./images/whatsapp.png" alt="" className='w-20 h-20 sm:w-28 sm:h-28' />
+      </div>
     <Navbar/>
     <div>
       <AboutBanner/>

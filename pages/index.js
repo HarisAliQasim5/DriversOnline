@@ -29,8 +29,8 @@ export default function Home() {
       
       <Swiper/>
       {/* ------------------------ Whatsapp Button------------------------------------ */}
-      <div className="fixed bottom-0 right-0 z-50 ">
-        <img src="./images/whatsapp.png" alt="" className='w-28 h-28' />
+      <div className="fixed bottom-0 -right-2 sm:right-0 z-50 ">
+        <img src="./images/whatsapp.png" alt="" className='w-20 h-20 sm:w-28 sm:h-28' />
       </div>
       {/* ------------------------- End Of Whatsapp Button ---------------------------- */}
 

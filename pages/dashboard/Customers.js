@@ -13,8 +13,10 @@ import Layout from '@/components/Dasboard/Layout';
 import Navbar from '@/components/Dasboard/Navbar';
 import { ToastContainer, toast } from 'react-toastify'; 
 import 'react-toastify/dist/ReactToastify.css';
+import { useDarkMode } from '../../components/ContextFiles/DarkModeContext';
 
 const Customers = () => {
+  const { darkMode } = useDarkMode();
     const [data, setdata] = useState();
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredData, setFilteredData] = useState([]);
@@ -220,9 +222,9 @@ const Customers = () => {
          
       <section className={` `}>
        
-        <h1 className={`text-3xl font-bold  pb-5 text-red-600  pt-10 `}>Users</h1>
+        <h1 className={`text-3xl font-bold  pb-5 text-purple  pt-10 `}>Users</h1>
         <div className="mx-auto max-w-screen-xl ">
-          <div className={`bg-[#283045]  shadow-md sm:rounded-lg overflow-hidden mx-auto`}>
+          <div className={`${darkMode ? "bg-[#283045] " : "bg-white"} shadow-md sm:rounded-lg overflow-hidden mx-auto`}>
             <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
               <div className="flex gap-x-6 sm:gap-x-0 sm:grid justify-between w-full md:w-1/2">
                     <form onSubmit={(e)=>e.preventDefault()} className="flex items-center">
@@ -233,7 +235,7 @@ const Customers = () => {
                                     <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
                                 </svg>
                             </div>
-                            <input type="text" id="simple-search" className="border  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 bg-[#353C56] border-gray-600 placeholder-gray-400 text-white focus:ring-primary-500 focus:border-primary-500" placeholder="Search" value={searchQuery} onChange={handleSearch} required="" />
+                            <input type="text" id="simple-search" className={`border  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 ${darkMode ? "bg-[#353C56] border-gray-600 placeholder-gray-400 text-white" : "bg-gray-300 border-gray-400 placeholder-black text-white"}  focus:ring-primary-500 focus:border-primary-500`} placeholder="Search" value={searchQuery} onChange={handleSearch} required="" />
                         </div>
                     </form>
                     <HiOutlineRefresh  onClick={handleRefresh} className='w-5 h-5 text-white cursor-pointer sm:hidden mt-2' />
@@ -254,7 +256,7 @@ const Customers = () => {
 
             <div className="relative overflow-x-auto">
                 <table className="w-full text-sm text-left  text-gray-400">
-                    <thead className="text-xs  uppercase  bg-[#353C56] text-gray-400">
+                    <thead className={`text-xs  uppercase ${darkMode ? "bg-[#353C56] text-gray-400" : "bg-black text-white" }  `}>
                         <tr>
                             <th scope="col" className="px-4 py-3">Name</th>
                             <th scope="col" className="px-4 py-3">Email</th>
@@ -266,11 +268,11 @@ const Customers = () => {
                             </th>
                         </tr>
                     </thead>
-                    <tbody className=''>
+                    <tbody className={`${darkMode ? "text-white" : "text-black"}`}>
   {filteredData && filteredData.length > 0 ? (
     filteredData.map((data) => (
         <tr className="border-b border-gray-700 " key={data.key}>
-        <th scope="row" className="px-4 py-3 font-medium whitespace-nowrap text-white">{data.data.firstName} {data.data.lastName}</th>
+        <th scope="row" className="px-4 py-3 font-medium whitespace-nowrap">{data.data.firstName} {data.data.lastName}</th>
         <td className="px-4 py-3">{data.data.email}</td>
         <td className="px-4 py-3">{data.data.phone}</td>
         {data.data.blocked ?
@@ -285,7 +287,7 @@ const Customers = () => {
   ) : (data && data.length >0 &&
     data.map((data) => (
       <tr className="border-b border-gray-700 " key={data.key}>
-        <th scope="row" className="px-4 py-3 font-medium whitespace-nowrap text-white">{data.data.firstName} {data.data.lastName}</th>
+        <th scope="row" className="px-4 py-3 font-medium whitespace-nowrap ">{data.data.firstName} {data.data.lastName}</th>
         <td className="px-4 py-3">{data.data.email}</td>
         <td className="px-4 py-3">{data.data.phone}</td>
         <td className="px-4 py-3">{data.data.gender}</td>
@@ -302,9 +304,9 @@ const Customers = () => {
                 </table>
             </div>
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
-                <span className="text-sm font-normal text-gray-400">
+                <span className={`text-sm font-normal ${darkMode ? "text-white" : "text-black"}`}>
                     {filteredData && filteredData.length >0 ? "Search" : data ? "Total": '0' }
-                    <span className="font-semibold text-white"> {filteredData && filteredData.length >0 ? filteredData.length : data ? data.length: '0' }</span>
+                    <span className="font-semibold "> {filteredData && filteredData.length >0 ? filteredData.length : data ? data.length: '0' }</span>
                 </span>
             </div>
           </div>
