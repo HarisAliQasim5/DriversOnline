@@ -10,8 +10,13 @@ import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 import { format, parseISO, addDays } from "date-fns";
 import { FaCalendar, FaTimes } from "react-icons/fa";
-
+import { ToastContainer, toast } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css';
+import getRecords from "@/firebase/getRecords";
+import BookingDriversCard from "@/components/BookingDriversCard";
 const Booking = () => {
+
+  // Booking --------------------------------------------------------------
   const [departure, setDeparture] = useState("");
   const [arrival, setArrival] = useState("");
   const [stopPoints, setStopPoints] = useState([]);
@@ -26,7 +31,12 @@ const Booking = () => {
   const arrivalDropdownRef = useRef(null);
   const stopDropdownRefs = useRef([]);
   const dateTimePickerRef = useRef(null);
+  const [open , setOpen] = useState(false);
 
+  //---------------------------Drivers Data--------------------------------------------
+
+  const [driverData , setDriversData]=useState();
+    
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -179,14 +189,32 @@ const Booking = () => {
   };
 
   const handleFindCar = () => {
-    console.log({
-      departure,
-      arrival,
-      stopPoints,
-      selectedDate: format(selectedDateTime, "dd-MMM-yyyy"),
-      selectedTime: format(selectedDateTime, "h:mm a"),
-    });
+    if ( departure && arrival)
+      {
+        // console.log({
+        //   departure,
+        //   arrival,
+        //   stopPoints,
+        //   selectedDate: format(selectedDateTime, "dd-MMM-yyyy"),
+        //   selectedTime: format(selectedDateTime, "h:mm a"),
+        // });
+        fetchData();
+      }
+      else{
+        console.log("hehe")
+      }
+   
   };
+  const fetchData = async () => {
+    try {
+        const res = await getRecords("drivers");
+        res &&
+        console.log(res)
+        setDriversData(res);
+    } catch (error) {
+        console.log(error)
+    }
+}
 
   const closeAllDropdowns = () => {
     setShowDepartureCities(false);
@@ -194,7 +222,11 @@ const Booking = () => {
     setShowStopCities({});
   };
 
+  // ---------------------------------------Drivers Data   -----------------
+
   return (
+    <>
+    {!open ?
     <div>
       <Navbar />
       <div className="relative flex items-center mt-16 sm:mt-12">
@@ -237,6 +269,7 @@ const Booking = () => {
                   setDepartureSelected(false);
                 }}
                 onChange={(e) => setDeparture(e.target.value)}
+                required
               />
               {showDepartureCities && (
                 <div className="absolute top-12 w-full lg:w-2/3 border-t-2 bg-white rounded-b-md shadow-lg z-10 min-h-[65px] max-h-[300px] overflow-y-auto">
@@ -392,12 +425,19 @@ const Booking = () => {
           </div>
         </div>
       </div>
+      {driverData && 
+      <BookingDriversCard data={driverData}/>}
       <BookingSteps />
       <BookingFeatures />
       <BookingTourCards />
       <BookingGallery />
       <Footer />
-    </div>
+    </div> : 
+     <div>
+      Hello
+     </div>
+     }
+    </>
   );
 };
 
