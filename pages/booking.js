@@ -15,6 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import getRecords from "@/firebase/getRecords";
 import BookingDriversCard from "@/components/BookingDriversCard";
 import { useRouter } from "next/router";
+import Loader from "@/components/Dasboard/Loader";
 const Booking = () => {
   const router = useRouter(); 
   // Booking --------------------------------------------------------------
@@ -33,7 +34,7 @@ const Booking = () => {
   const stopDropdownRefs = useRef([]);
   const dateTimePickerRef = useRef(null);
   const [open , setOpen] = useState(false);
-
+  const [loading, setLoading] = useState(false);  
   //---------------------------Drivers Data--------------------------------------------
 
   const [driverData , setDriversData]=useState();
@@ -207,13 +208,16 @@ const Booking = () => {
    
   };
   const fetchData = async () => {
+    setLoading(true)
     try {
         const res = await getRecords("drivers");
         res &&
         console.log(res)
         setDriversData(res);
+        setLoading(false)
     } catch (error) {
         console.log(error)
+        setLoading(false)
     }
 }
 
@@ -240,10 +244,24 @@ const handleBookNow = (driver , Amount) => {
     setShowStopCities({});
   };
 
+  useEffect(() => {
+    if (driverData) {
+      const element = document.getElementById("bookingDriversCard");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [driverData]);
+  
+  
+
   // ---------------------------------------Drivers Data   -----------------
 
   return (
     <div>
+      {loading ? 
+      <Loader/> :
+    <>
       <Navbar />
       <div className="relative flex items-center mt-16 sm:mt-12">
         <img
@@ -442,12 +460,15 @@ const handleBookNow = (driver , Amount) => {
         </div>
       </div>
       {driverData && 
-      <BookingDriversCard data={driverData}  onBookNow={handleBookNow} />}
+      <div id="bookingDriversCard">
+      <BookingDriversCard data={driverData}  onBookNow={handleBookNow} id="bookingDriversCard"/></div>}
       <BookingSteps />
       <BookingFeatures />
       <BookingTourCards />
       <BookingGallery />
       <Footer />
+      </>
+    }
     </div>
   );
 };

@@ -40,14 +40,16 @@ const BookingDriversCard = ({ data ,  onBookNow  }) => {
     }
   };
 
+  const Amount =323;
    
 
   return (
-    <div className="px-10">
-      <div className="grid grid-cols-3 mt-20 gap-x-10">
+    <div className="px-10 ">
+      <h1 className="text-5xl text-purple mt-10 font-serif font-bold">Available Cars</h1>
+      <div className="grid lg:grid-cols-2 xl:grid-cols-3 mt-10 gap-x-10">
         {dataArray.map((item, index) => (
           <div key={index} className="flex justify-center ">
-            <div className="rounded-lg shadow-lg max-w-lg w-full pb-5">
+            <div className="rounded-lg shadow-lg max-w-lg w-full pb-2">
               <Swiper
                 spaceBetween={0}
                 slidesPerView={1}
@@ -68,7 +70,7 @@ const BookingDriversCard = ({ data ,  onBookNow  }) => {
                         <img
                           src={imageUrl}
                           alt={`Image ${slideIndex + 1}`}
-                          className="w-full h-64 object-cover rounded-t-xl"
+                          className="w-full h-44 object-fill rounded-t-xl"
                         />
                       </SwiperSlide>
                     ))
@@ -76,20 +78,20 @@ const BookingDriversCard = ({ data ,  onBookNow  }) => {
               </Swiper>
               <div className="top-0 left-0 right-0 bottom-0 flex items-center justify-between opacity-100 transition-opacity duration-300 hover:opacity-100">
                 <button
-                  className="text-2xl -mt-60 z-50 text-white bg-gray-900 bg-opacity-50 rounded-full p-0.5 hover:bg-opacity-75"
+                  className="text-2xl -mt-40 z-30 text-white bg-gray-900 bg-opacity-50 rounded-full p-0.5 hover:bg-opacity-75"
                   onClick={() => goPrev(swiperInstances.current[index])}
                 >
                   <IoIosArrowBack />
                 </button>
                 <button
-                  className="text-2xl -mt-60 z-50 text-white bg-gray-900 bg-opacity-50 rounded-full p-0.5 hover:bg-opacity-75"
+                  className="text-2xl -mt-40 z-30 text-white bg-gray-900 bg-opacity-50 rounded-full p-0.5 hover:bg-opacity-75"
                   onClick={() => goNext(swiperInstances.current[index])}
                 >
                   <IoIosArrowForward />
                 </button>
               </div>
               <div className="px-2">
-                <div className="grid grid-cols-3 mt-4">
+                <div className="grid grid-cols-3 mt-1">
                   <div className="flex col-span-2 gap-x-4">
                     <div className="flex flex-col justify-center">
                       <img
@@ -125,7 +127,7 @@ const BookingDriversCard = ({ data ,  onBookNow  }) => {
 
                   </div>
                 </div>
-                <div className="flex gap-x-2 mt-5">
+                <div className="flex gap-x-2 mt-">
                         <div className="flex flex-col justify-center">
                         <IoCarSport className="text-purple text-xl"/>
                         </div>
@@ -164,8 +166,8 @@ const BookingDriversCard = ({ data ,  onBookNow  }) => {
                   </div>
 
                 </div>
-                <hr className="mt-4 border-t border-purple "></hr>
-                <div className="mt-3">
+                <hr className="mt-1 border-t border-purple "></hr>
+                <div className="mt-1">
                   <div className="flex">
                   <p>This is Final Price</p>
                   <div className="flex flex-col justify-center mt-0.5 pl-1">
@@ -175,8 +177,8 @@ const BookingDriversCard = ({ data ,  onBookNow  }) => {
                   <p className="font-bold">Gel 336 - Price for the Vehicle</p>
                 </div>
 
-                <div className="flex bg-purple justify-center mx-4 py-1.5 rounded-lg mt-5">
-                  <button className="text-white font-bold" onClick={() => onBookNow(item.key , 3000)}>Book Now</button>
+                <div className="flex bg-purple justify-center mx-4 py-1.5 rounded-lg mt-2 cursor-pointer" onClick={() => onBookNow(item.key , Amount)}>
+                  <button className="text-white font-bold" >Book Now</button>
                 </div>
               </div>
             </div>
