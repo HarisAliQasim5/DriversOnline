@@ -14,8 +14,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import getRecords from "@/firebase/getRecords";
 import BookingDriversCard from "@/components/BookingDriversCard";
+import { useRouter } from "next/router";
 const Booking = () => {
-
+  const router = useRouter(); 
   // Booking --------------------------------------------------------------
   const [departure, setDeparture] = useState("");
   const [arrival, setArrival] = useState("");
@@ -216,6 +217,23 @@ const Booking = () => {
     }
 }
 
+const handleBookNow = (driver , Amount) => {
+  const bookingData = {
+    departure,
+    arrival,
+    stopPoints,
+    selectedDate: format(selectedDateTime, "dd-MMM-yyyy"),
+    selectedTime: format(selectedDateTime, "h:mm a"),
+    driver, 
+    Amount
+  };
+
+  router.push({
+    pathname: "/checkout",
+    query: { data: JSON.stringify(bookingData) }
+  });
+};
+
   const closeAllDropdowns = () => {
     setShowDepartureCities(false);
     setShowArrivalCities(false);
@@ -225,8 +243,6 @@ const Booking = () => {
   // ---------------------------------------Drivers Data   -----------------
 
   return (
-    <>
-    {!open ?
     <div>
       <Navbar />
       <div className="relative flex items-center mt-16 sm:mt-12">
@@ -426,18 +442,13 @@ const Booking = () => {
         </div>
       </div>
       {driverData && 
-      <BookingDriversCard data={driverData}/>}
+      <BookingDriversCard data={driverData}  onBookNow={handleBookNow} />}
       <BookingSteps />
       <BookingFeatures />
       <BookingTourCards />
       <BookingGallery />
       <Footer />
-    </div> : 
-     <div>
-      Hello
-     </div>
-     }
-    </>
+    </div>
   );
 };
 

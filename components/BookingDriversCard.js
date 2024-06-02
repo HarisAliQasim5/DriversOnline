@@ -16,7 +16,7 @@ import { AiTwotoneExclamationCircle } from "react-icons/ai";
 // Install Swiper modules
 SwiperCore.use([Pagination, Autoplay]);
 
-const BookingDriversCard = ({ data , open }) => {
+const BookingDriversCard = ({ data ,  onBookNow  }) => {
   // Ensure data is an array
   const dataArray = Array.isArray(data) ? data : [];
 
@@ -39,6 +39,8 @@ const BookingDriversCard = ({ data , open }) => {
       swiperInstances.current[index] = swiper;
     }
   };
+
+   
 
   return (
     <div className="px-10">
@@ -174,7 +176,7 @@ const BookingDriversCard = ({ data , open }) => {
                 </div>
 
                 <div className="flex bg-purple justify-center mx-4 py-1.5 rounded-lg mt-5">
-                  <button className="text-white font-bold">Book Now</button>
+                  <button className="text-white font-bold" onClick={() => onBookNow(item.key , 3000)}>Book Now</button>
                 </div>
               </div>
             </div>
