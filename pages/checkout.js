@@ -7,7 +7,6 @@ import { MdOutlineMyLocation } from "react-icons/md";
 import { FaFlagCheckered } from "react-icons/fa";
 import { createBooking } from "../firebase/bookingTableFormation";
 
-
 const Checkout = () => {
   const router = useRouter();
   const [bookingData, setBookingData] = useState(null);
@@ -20,7 +19,12 @@ const Checkout = () => {
 
   useEffect(() => {
     if (router.query.data) {
-      setBookingData(JSON.parse(router.query.data));
+      try {
+        const parsedData = JSON.parse(router.query.data);
+        setBookingData(parsedData);
+      } catch (error) {
+        console.error("Failed to parse booking data:", error);
+      }
     }
   }, [router.query.data]);
 

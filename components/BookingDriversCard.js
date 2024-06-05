@@ -44,12 +44,12 @@ const BookingDriversCard = ({ data ,  onBookNow  }) => {
    
 
   return (
-    <div className="px-10 ">
+    <div className="px-2 sm:px-10 ">
       <h1 className="text-5xl text-purple mt-10 font-serif font-bold">Available Cars</h1>
-      <div className="grid lg:grid-cols-2 xl:grid-cols-3 mt-10 gap-x-10">
+      <div className="grid md:grid-cols-2 xl:grid-cols-3 mt-10 gap-x-10">
         {dataArray.map((item, index) => (
           <div key={index} className="flex justify-center ">
-            <div className="rounded-lg shadow-lg max-w-lg w-full pb-2">
+            <div className="rounded-lg shadow-lg max-w-[300px] xs:max-w-sm pb-2 ">
               <Swiper
                 spaceBetween={0}
                 slidesPerView={1}
