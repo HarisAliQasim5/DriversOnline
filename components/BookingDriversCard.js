@@ -72,9 +72,14 @@ const BookingDriversCard = ({ data, onBookNow,departure, arrival, stopPoints, se
 
   return (
     <div className="px-2 sm:px-10">
-      <h1 className="text-5xl text-purple mt-10 font-serif font-bold">
+   
+      {dataArray.length === 0 ?
+              <h1 className="text-5xl text-purple mt-10 font-serif font-bold">
+              No car found
+            </h1> :    <h1 className="text-5xl text-purple mt-10 font-serif font-bold">
         Available Cars
       </h1>
+}
       <div className="flex justify-between items-center mt-5">
         <div>
           <p className="text-lg text-gray-600">Departure Destination:</p>
@@ -107,6 +112,8 @@ const BookingDriversCard = ({ data, onBookNow,departure, arrival, stopPoints, se
           <p className="text-sm text-gray-500">{formatDay(selectedDate)}</p>
         </div>
       </div>
+      <div className="mb-10">
+
       {dataArray.length === 0 ? (
         <p className="text-lg mt-5 text-center text-gray-500">No rides found.</p>
       ) : (
@@ -256,6 +263,7 @@ const BookingDriversCard = ({ data, onBookNow,departure, arrival, stopPoints, se
           ))}
         </div>
       )}
+    </div>
     </div>
   );
 };

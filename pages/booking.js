@@ -1,11 +1,6 @@
   import Navbar from "@/components/layoutScreen/Navbar";
   import React, { useState, useEffect, useRef } from "react";
   import cities from "../src/locals/cities";
-  import BookingSteps from "@/components/BookingSteps";
-  import BookingFeatures from "@/components/BookingFeatures";
-  import BookingGallery from "@/components/BookingGallery";
-  import Footer from "@/components/layoutScreen/Footer";
-  import BookingTourCards from "@/components/BookingTourCards";
   import flatpickr from "flatpickr";
   import "flatpickr/dist/flatpickr.min.css";
   import { format, parseISO, addDays } from "date-fns";
@@ -306,7 +301,7 @@
         <Navbar />
         <div className="relative flex items-center mt-16 sm:mt-12">
           <img
-            src="./images/book.jpg"
+            src="./images/t1.webp"
             alt="swiper"
             style={{
               height: `calc(${
@@ -323,7 +318,7 @@
             </p>
           </div>
           <div className="absolute w-full px-2 sm:px-10 xl:px-32 mt-56 sm:mt-32">
-            <div className="bg-gray-500 bg-opacity-60 rounded-2xl p-6 xl:p-0 xl:py-16 space-y-4">
+            <div className="  bg-dark rounded-2xl p-6 xl:p-0 xl:py-16 space-y-4">
               <h1 className="text-white text-center font-bold text-4xl pb-5">
                 Book Your Ride Now
               </h1>
@@ -511,11 +506,11 @@
           selectedDate={formatDateTime(selectedDateTime)}
         />
         </div>}
-        <BookingSteps />
+        {/* <BookingSteps />
         <BookingFeatures />
         <BookingTourCards />
         <BookingGallery />
-        <Footer />
+        <Footer /> */}
         </>
       }
       </div>

@@ -8,6 +8,7 @@ import WhyChooseUs from '@/components/WhyChooseUs';
 import Sample from '@/components/Sample';
 import DownloadApp from '@/components/HomePage/DownloadApp';
 import Timeline from '@/components/Timeline';
+import { MdWhatsapp } from "react-icons/md";
 import HomeFeatures from '@/components/HomePage/HomeFeatures';
 import HomeChooseus from '@/components/HomePage/HomeChooseus';
 import HomeInsights from '@/components/HomePage/HomeInsights';
@@ -29,8 +30,9 @@ export default function Home() {
       
       <Swiper/>
       {/* ------------------------ Whatsapp Button------------------------------------ */}
-      <div className="fixed bottom-0 -right-2 sm:right-0 z-50 ">
-        <img src="./images/whatsapp.png" alt="" className='w-20 h-20 sm:w-28 sm:h-28' />
+      <div className="fixed bottom-3 -right-10 sm:right-0 z-50 mx-5 ">
+
+      <MdWhatsapp className='w-12 h-12 hover:text-green-600 cursor-pointer ' />
       </div>
       {/* ------------------------- End Of Whatsapp Button ---------------------------- */}
 

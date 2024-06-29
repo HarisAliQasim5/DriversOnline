@@ -41,9 +41,9 @@ const Navbar = () => {
         <div className="flex flex-wrap items-center justify-between gap-5 w-full">
           <a href="/">
             <img
-              src="https://readymadeui.com/readymadeui.svg"
+              src="/images/logo.png"
               alt="logo"
-              className="w-36"
+              className="w-12 h-12"
             />
           </a>
 
@@ -89,7 +89,7 @@ const Navbar = () => {
                       className="hover:text-[#6DC9E8] flex flex-col justify-center mt-1"
                       onClick={handleDropDown}
                     >
-                    <p>{language}</p>
+                    <p className="px-1 uppercase">{language}</p>
                     </div>
                   </Menu.Button>
                 </div>
@@ -115,15 +115,15 @@ const Navbar = () => {
 
                       <Menu.Item
                         className="hover:text-[#6DC9E8]"
-                        onClick={() => handleLanguageChange("fr")}
+                        onClick={() => handleLanguageChange("ka")}
                       >
-                        <h1 className={"block px-4 py-2 text-sm"}>French</h1>
+                        <h1 className={"block px-4 py-2 text-sm"}>Georgian</h1>
                       </Menu.Item>
                       <Menu.Item
                         className="hover:text-[#6DC9E8]"
-                        onClick={() => handleLanguageChange("es")}
+                        onClick={() => handleLanguageChange("ru")}
                       >
-                        <h1 className={"block px-4 py-2 text-sm"}>Spanish</h1>
+                        <h1 className={"block px-4 py-2 text-sm"}>Russian</h1>
                       </Menu.Item>
                     </div>
                   </Menu.Items>

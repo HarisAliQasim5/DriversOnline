@@ -57,7 +57,7 @@ const Swiper = () => {
       </div>
       }
 
-{ language ==='fr' &&
+{ language ==='ka' &&
         <div className="relative flex  items-center mt-16 sm:mt-12">
         <img src={images[currentImageIndex].src} alt="swiper" className="w-full md:h-full h-[250px]" />
         <div className="absolute left-4 sm:left-10 text-white text-xl font-bold">
@@ -88,7 +88,7 @@ const Swiper = () => {
       </div>
       }
 
-{ language ==='es' &&
+{ language ==='ru' &&
         <div className="relative flex  items-center mt-16 sm:mt-12">
         <img src={images[currentImageIndex].src} alt="swiper" className="w-full md:h-full h-[250px]" />
         <div className="absolute left-4 sm:left-10 text-white text-xl font-bold">

@@ -1,6 +1,9 @@
 import React from "react";
 import { useDarkMode } from "../ContextFiles/DarkModeContext";
 import { useLanguage } from "../ContextFiles/LanguageContext";
+
+import cities from "@/src/locals/cities";
+
 const HomeRating = () => {
   const { darkMode } = useDarkMode();
   const { language } = useLanguage();
@@ -9,10 +12,9 @@ const HomeRating = () => {
         {language ==='en' && <div className={`sm:px-10 px-4 font-serif pt-20 ${darkMode ? "bg-dark" : ""}`}>
       <div className="lg:grid lg:grid-cols-4">
         <div className="lg:col-span-3">
-          <p className="pt-5 text-4xl md:text-5xl pb-10 ">
-            Eliminating social inequality in{" "}
-            <span className="text-purple">order to improve</span> the lot of the
-            world's billions of humans
+          <p className="pt-5 text-4xl md:text-4xl pb-10 ">
+          Ensuring  reliable{" "}
+            <span className="text-purple">taxi services </span><br/>to enhance the daily commute
           </p>
         </div>
         <div>
@@ -24,18 +26,18 @@ const HomeRating = () => {
       <div className="grid grid-cols-3 gap-x-10">
         <div>
         <div className={`my-5  h-[2px] w-full  bg-gradient-to-br from-purple to-magenta `}></div>
-        <h1 className="text-5xl font-bold">749</h1>
-        <p className="text-2xl pt-2">cities</p>
+        <h1 className="text-4xl font-bold">3</h1>
+        <p className="text-2xl pt-2">Languages</p>
         </div>
         <div>
         <div className={`my-5  h-[2px] w-full  bg-gradient-to-br from-purple to-magenta `}></div>
-        <h1 className="text-5xl font-bold">3</h1>
-        <p className="text-2xl pt-2">Countries</p>
+        <h1 className="text-4xl font-bold">4</h1>
+        <p className="text-2xl pt-2">Ride Categories</p>
         </div>
         <div>
         <div className={`my-5  h-[2px] w-full  bg-gradient-to-br from-purple to-magenta `}></div>
-        <h1 className="text-5xl font-bold">200+</h1>
-        <p className="text-2xl pt-2">App Installs</p>
+        <h1 className="text-4xl font-bold">{cities.length}</h1>
+        <p className="text-2xl pt-2">Cities</p>
         </div>
       </div>
     </div>}
