@@ -300,23 +300,6 @@
       <>
         <Navbar />
         <div className="relative flex items-center mt-16 sm:mt-12">
-          <img
-            src="./images/t1.webp"
-            alt="swiper"
-            style={{
-              height: `calc(${
-                stopPoints.length > 0 ? 803 + stopPoints.length * 60 : 803
-              }px)`,
-            }}
-            className="h-[690px] sm:h-[600px] lg:h-full w-full"
-          />
-          <div className="absolute top-10 lg:px-32 xl:px-60 text-center text-white text-3xl sm:text-5xl font-bold">
-            <p>Transfer and tours around Georgia from private drivers</p>
-            <p className="text-lg sm:text-xl mt-5">
-              Incredibly friendly locals will tell you all about Georgia's most
-              picturesque, breathtaking, and gastronomic must-visit places
-            </p>
-          </div>
           <div className="absolute w-full px-2 sm:px-10 xl:px-32 mt-56 sm:mt-32">
             <div className="  bg-dark rounded-2xl p-6 xl:p-0 xl:py-16 space-y-4">
               <h1 className="text-white text-center font-bold text-4xl pb-5">
@@ -506,11 +489,6 @@
           selectedDate={formatDateTime(selectedDateTime)}
         />
         </div>}
-        {/* <BookingSteps />
-        <BookingFeatures />
-        <BookingTourCards />
-        <BookingGallery />
-        <Footer /> */}
         </>
       }
       </div>

@@ -22,6 +22,7 @@ import KidsHero from '@/components/KidsHero';
 import KidsFeature from '@/components/KidsFeature';
 import KidsRide from '@/components/KidsRide';
 import KidsCare from '@/components/KidsCare';
+import BookingMain from '@/components/BookingMain';
 
 const driveforkids = () => {
   return (
@@ -29,6 +30,7 @@ const driveforkids = () => {
         <Navbar/>
 
         <KidsHero/>
+        <BookingMain/>
 
         <div className='my-5 mx-10  '>
             <img  className='rounded-2xl shadow-sm' src='/images/kids.avif'/>
