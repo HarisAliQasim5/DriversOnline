@@ -14,7 +14,7 @@ import Loader from "@/components/Dasboard/Loader";
 
 
 
-const BookingMain = () => {
+const BookingMain = (props) => {
   const router = useRouter(); 
   // Booking --------------------------------------------------------------
   const [departure, setDeparture] = useState("");
@@ -210,17 +210,26 @@ const BookingMain = () => {
     try {
       const res = await getRecords("drivers");
       if (res) {
-        // Get the selected day from selectedDateTime
-        const selectedDay = format(selectedDateTime, "EEEE"); // "EEEE" gives full weekday name (e.g., Monday)
-  
+        // Get the selected day from selectedDateTime and convert to lowercase
+        const selectedDay = format(selectedDateTime, "EEEE").toLowerCase(); // "EEEE" gives full weekday name (e.g., Monday)
+    
         // Filter and calculate total price for each driver
         const filteredDrivers = res.filter(driver => {
-          console.log("driver" , driver)
+          // Validate and convert driver's work schedule and category to lowercase
+          const workSchedule = driver.data.workSchedule.map(day => day.toLowerCase());
+          const driverCategory = driver.data.category.toLowerCase();
+          const userCategory = props.category ? props.category.toLowerCase() : ''
+    
           // Check if driver works on the selected day
-          if (!driver.data.workSchedule.includes(selectedDay)) {
+          if (!workSchedule.includes(selectedDay)) {
             return false;
           }
-  
+    
+          // Check if driver's category matches the selected category
+          if (driverCategory !== userCategory) {
+            return false;
+          }
+    
           // Check if driver covers all cities from departure to arrival via stop points
           const citiesToCheck = [departure, ...stopPoints, arrival];
           let totalPrice = 0;
@@ -234,16 +243,16 @@ const BookingMain = () => {
               return false; // Driver doesn't cover this route
             }
           }
-  
+    
           // Store totalPrice in driver object
           driver.price = totalPrice;
-  
+    
           return true; // Driver meets all criteria
         });
-  
+    
         // Sort drivers by totalPrice ascending (cheapest first)
         filteredDrivers.sort((a, b) => a.price - b.price);
-  
+    
         // Set filtered drivers to state
         setDriversData(filteredDrivers);
       }
@@ -253,6 +262,7 @@ const BookingMain = () => {
       setLoading(false);
     }
   };
+  
   
   
 

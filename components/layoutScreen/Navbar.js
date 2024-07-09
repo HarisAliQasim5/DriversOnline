@@ -12,8 +12,14 @@ const Navbar = () => {
   
   const menuItems = [
     { id: 2, label: "Drivers for Kids", url: "/driveforkids" },
-    { id: 3, label: "Personal Driver", url: "/about" },
-    { id: 4, label: "Family Driver", url: "/services" },
+    { id: 3, label: "Personal Driver", url: "/personalDriver" },
+    { id: 4, label: "Family Driver", url: "/familyDriver" },
+    { id: 5, label: "Intra City Driver", url: "/intraCityDriver" }
+  ];
+  const menuItemssecond = [
+    { id: 2, label: "Home", url: "/" },
+    { id: 3, label: "About", url: "/about" },
+    { id: 4, label: "Services", url: "/services" },
     { id: 5, label: "Contact", url: "/contact" }
   ];
   const router = useRouter();
@@ -26,7 +32,7 @@ const Navbar = () => {
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
-  };
+  };  
  
   const handleLanguageChange = (newLanguage) => {
     changeLanguage(newLanguage);
@@ -187,13 +193,13 @@ const Navbar = () => {
                                   <IoClose className="text-3xl" />
                                 </button>
                                 <div>
-                                  <a href="/">
-                                    <img
-                                      src="https://readymadeui.com/readymadeui.svg"
-                                      alt="logo"
-                                      className="w-36"
-                                    />
-                                  </a>
+                                <a href="/">
+                                  <img
+                                    src="/images/logo.png"
+                                    alt="logo"
+                                    className="w-12 h-12"
+                                  />
+                                </a>
                                 </div>
                               </div>
                               <div className="flex space-x-3 mt-6 md:hidden">
@@ -220,7 +226,24 @@ const Navbar = () => {
                                 </div>
                               </div>
 
-                              <ul className="py-6 space-y-5 text-xl flex flex-col items-center justify-center">
+                  
+                              <ul className="py-6  space-y-5 text-xl flex flex-col items-center justify-center">
+                                {menuItemssecond.map((item  ) => (
+                                  <li
+                                    key={item.id}
+                                    className="max-lg:border-b border-gray-300 max-lg:py-3 "
+                                  >
+                                    <Link
+                                      href={item.url}
+                                      className={`hover:text-[#007bff] block font-semibold `}
+                                    >
+                                      {item.label}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+
+                              <ul className="py-6 md:hidden  space-y-5 text-xl flex flex-col items-center justify-center">
                                 {menuItems.map((item) => (
                                   <li
                                     key={item.id}
@@ -235,6 +258,8 @@ const Navbar = () => {
                                   </li>
                                 ))}
                               </ul>
+
+
                               <div className="p-4">
                                 {/* <button className="w-full py-2 bg-[#007bff] text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-300">
                                   Login

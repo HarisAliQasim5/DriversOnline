@@ -30,7 +30,7 @@ const driveforkids = () => {
         <Navbar/>
 
         <KidsHero/>
-        <BookingMain/>
+        <BookingMain category="driver for kids"/>
 
         <div className='my-5 mx-10  '>
             <img  className='rounded-2xl shadow-sm' src='/images/kids.avif'/>
