@@ -1,20 +1,19 @@
 import React, { Fragment, useState , useContext , useRef} from "react";
-import { BiChevronDown,BiChevronUp } from "react-icons/bi";
 import { Menu, Transition , Dialog } from "@headlessui/react";
 import { IoMenu, IoClose } from "react-icons/io5";
 import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
 import { useDarkMode } from "../ContextFiles/DarkModeContext";
 import { useLanguage } from "../ContextFiles/LanguageContext";
-import { TbWorld } from "react-icons/tb";
+
 import { useRouter } from 'next/router';
 import Link from 'next/link'
 const Navbar = () => {
 
   
   const menuItems = [
-    { id: 2, label: "Home", url: "/" },
-    { id: 3, label: "About", url: "/about" },
-    { id: 4, label: "Services", url: "/services" },
+    { id: 2, label: "Drivers for Kids", url: "/driveforkids" },
+    { id: 3, label: "Personal Driver", url: "/about" },
+    { id: 4, label: "Family Driver", url: "/services" },
     { id: 5, label: "Contact", url: "/contact" }
   ];
   const router = useRouter();
@@ -83,13 +82,13 @@ const Navbar = () => {
             <div className="sm:flex flex-col justify-center items-center mt-1 hidden">
               <Menu as="div" className="relative inline-block text-left">
                 <div onClick={handleDropDown}>
-                  <Menu.Button className={`flex    font-openSans  font-bold  ${darkMode ? "bg-slate-700":"bg-gray-300"}  px-2 py-0.5 rounded-3xl`}>
-                    <TbWorld className="text-3xl" />
+                  <Menu.Button className={`flex   items-center  font-openSans  font-bold  ${darkMode ? "bg-slate-700":"bg-gray-300"}  px-2 py-0.5 rounded-3xl`}>
+                   <img className="w-6 h-4" src={language == "en" ? "/images/eng.png" : language == "ka" ? "/images/rus.png" : "/images/grg.png"} />
                     <div
                       className="hover:text-[#6DC9E8] flex flex-col justify-center mt-1"
                       onClick={handleDropDown}
                     >
-                    <p className="px-1 uppercase">{language}</p>
+                    <p className="px-1 uppercase">{language == "en" ? "ENG" : language == "ka" ? "RUS" : "GE"}</p>
                     </div>
                   </Menu.Button>
                 </div>
@@ -130,13 +129,13 @@ const Navbar = () => {
                 </Transition>
               </Menu>
             </div>
-            <div className="flex flex-col justify-center pl-1">
+            {/* <div className="flex flex-col justify-center pl-1">
               <button className="px-4 py-2 text-sm rounded-xl font-bold text-white bg-gradient-to-r from-purple to-magenta transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#007bff] hidden lg:flex">
                 Login
               </button>
-            </div>
+            </div> */}
 
-            <button className="lg:hidden" onClick={toggleDrawer}>
+            <button  onClick={toggleDrawer}>
               {isDrawerOpen ? (
                 ""
               ) : (
@@ -149,7 +148,7 @@ const Navbar = () => {
                 <Transition.Root show={open} as={Fragment}>
                   <Dialog
                     as="div"
-                    className={`fixed top-0 left-0 bottom-0 overflow-x-auto ${darkMode ? "bg-gradient-to-r from-purple to-magenta" : "bg-white"}  w-[90%] sm:w-[50%] shadow-xl z-50 transition-transform duration-1000 ease-in-out transform ${
+                    className={`fixed top-0 left-0 bottom-0 overflow-x-auto ${darkMode ? "bg-gradient-to-r from-purple to-magenta" : "bg-white"} lg:w-96  w-[90%] sm:w-[50%] shadow-xl z-50 transition-transform duration-1000 ease-in-out transform ${
                       isDrawerOpen ? "-translate-x-3" : "-translate-x-[3000px]"
                     }`}
                     initialFocus={cancelButtonRef}
@@ -221,7 +220,7 @@ const Navbar = () => {
                                 </div>
                               </div>
 
-                              <ul className="py-6">
+                              <ul className="py-6 space-y-5 text-xl flex flex-col items-center justify-center">
                                 {menuItems.map((item) => (
                                   <li
                                     key={item.id}
@@ -229,7 +228,7 @@ const Navbar = () => {
                                   >
                                     <a
                                       href={item.url}
-                                      className={`hover:text-[#007bff] block font-semibold text-[15px]`}
+                                      className={`hover:text-[#007bff] block font-semibold `}
                                     >
                                       {item.label}
                                     </a>
@@ -237,12 +236,12 @@ const Navbar = () => {
                                 ))}
                               </ul>
                               <div className="p-4">
-                                <button className="w-full py-2 bg-[#007bff] text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                                {/* <button className="w-full py-2 bg-[#007bff] text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-300">
                                   Login
                                 </button>
                                 <button className="w-full mt-4 py-2 bg-[#007bff] text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-300">
                                   Sign up
-                                </button>
+                                </button> */}
                               </div>
                             </div>
                           </Dialog.Panel>
