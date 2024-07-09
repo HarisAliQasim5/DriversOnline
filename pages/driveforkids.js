@@ -19,6 +19,9 @@ import HomeDrivers from '@/components/HomePage/HomeDrivers';
 import Footer from '@/components/layoutScreen/Footer';
 import Navbar from '@/components/layoutScreen/Navbar';
 import KidsHero from '@/components/KidsHero';
+import KidsFeature from '@/components/KidsFeature';
+import KidsRide from '@/components/KidsRide';
+import KidsCare from '@/components/KidsCare';
 
 const driveforkids = () => {
   return (
@@ -30,6 +33,15 @@ const driveforkids = () => {
         <div className='my-5 mx-10  '>
             <img  className='rounded-2xl shadow-sm' src='/images/kids.avif'/>
         </div>
+        <KidsRide/>
+        <KidsCare/>
+
+        <KidsFeature/>
+        
+
+        
+
+
 
         <Footer/>
     </>
