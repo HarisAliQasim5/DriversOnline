@@ -311,8 +311,8 @@ const handleBookNow = (driver , Amount) => {
       <Loader/> :
         <div className="my-10">
       <Navbar />
-      <div className="relative flex items-center mt-16 sm:mt-12">
-        <div className=" w-full px-2 sm:px-10 xl:px-32 mt-56 sm:mt-32">
+      <div className="relative flex items-center ">
+        <div className=" w-full px-2 sm:px-10 xl:px-32 ">
           <div className="  bg-dark rounded-2xl p-6 xl:p-0 xl:py-16 space-y-4">
             <h1 className="text-white text-center font-bold text-4xl pb-5">
               Book Your Ride
