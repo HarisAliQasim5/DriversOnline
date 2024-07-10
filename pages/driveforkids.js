@@ -42,8 +42,7 @@ const driveforkids = () => {
         
 
         
-
-
+        <DownloadApp/>
 
         <Footer/>
     </>

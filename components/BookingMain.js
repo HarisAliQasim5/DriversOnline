@@ -217,8 +217,7 @@ const BookingMain = (props) => {
         const filteredDrivers = res.filter(driver => {
           // Validate and convert driver's work schedule and category to lowercase
           const workSchedule = driver.data.workSchedule.map(day => day.toLowerCase());
-          const driverCategory = driver.data.category.toLowerCase();
-          const userCategory = props.category ? props.category.toLowerCase() : ''
+          const userCategory = props.category ? props.category.toLowerCase() : '';
     
           // Check if driver works on the selected day
           if (!workSchedule.includes(selectedDay)) {
@@ -226,7 +225,9 @@ const BookingMain = (props) => {
           }
     
           // Check if driver's category matches the selected category
-          if (driverCategory !== userCategory) {
+          // driver.data.category is an array, check that userCategory is in the array
+          const driverCategories = driver.data.category.map(cat => cat.toLowerCase());
+          if (!driverCategories.includes(userCategory)) {
             return false;
           }
     
@@ -262,6 +263,7 @@ const BookingMain = (props) => {
       setLoading(false);
     }
   };
+  
   
   
   
