@@ -1,3 +1,4 @@
+import BookingMain from '@/components/BookingMain'
 import IntracityHero from '@/components/IntracityHero'
 import IntracityMain from '@/components/IntracityMain'
 import IntracitySteps from '@/components/IntracitySteps'
@@ -9,6 +10,7 @@ const intraCityDriver = () => {
     <div>
       <Navbar/>
       <IntracityHero/>
+      <BookingMain/>
       <IntracityMain/>
       <IntracitySteps/>
     </div>

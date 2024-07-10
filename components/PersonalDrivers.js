@@ -9,8 +9,8 @@ const PersonalDrivers = () => {
             <div>
             <h1 className='text-purple '>BOOK DRIVERS</h1>
             <div className='flex flex-col text-white'>
-            <h2 className='text-3xl lg:text-5xl font-semibold '>Hire Personal Drivers at <span>Your Convenience</span></h2>
-            <h2 className='text-3xl lg:text-5xl font-semibold hidden '>Your Convenience</h2>
+            <h2 className='text-3xl lg:text-5xl font-semibold '>Hire Personal Drivers at <span className='sm:hidden'>Your Convenience</span></h2>
+            <h2 className='text-3xl lg:text-5xl font-semibold hidden sm:flex'>Your Convenience</h2>
             </div>
            
             <div className='flex justify-center'>

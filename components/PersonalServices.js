@@ -16,9 +16,9 @@ const PersonalServices = () => {
     const { darkMode } = useDarkMode();
     const { language } = useLanguage();
   return (
-    <div className={` ${darkMode ? "bg-dark" : ""} px-4 sm:px-10 pt-32 pb-5`}>
+    <div className={` ${darkMode ? "bg-dark" : ""} px-4 sm:px-10 pt-8 pb-5`}>
       <div className={`font-serif   rounded-3xl p-2 `}>
-        <h1 className="text-purple font-bold pb-5 text-4xl lg:hidden  ">
+        <h1 className="text-purple font-bold pb-5 text-4xl lg:hidden ">
           Unsere Services
         </h1>
         <div className="grid lg:grid-cols-2 ">
@@ -27,13 +27,13 @@ const PersonalServices = () => {
               <img
                 src="./images/perDriv.jpg"
                 alt=""
-                className="w-[400px] h-[450px] rounded-xl"
+                className="lg:w-[400px] lg:h-[450px] rounded-xl"
               />
             </div>
           </div>
 
           <div className="">
-            <h1 className="text-3xl pt-10 font-bold bg-gradient-to-br from-purple to-magenta text-transparent bg-clip-text hidden sm:flex">
+            <h1 className="text-3xl pt-10 font-bold bg-gradient-to-br from-purple to-magenta text-transparent bg-clip-text hidden lg:flex">
             Unsere Services
             </h1>
             <p className="mt-5 pr-5 mb-5">At "Personal Drivers," we offer safe, reliable, and professional driving services tailored to your needs. Our experienced drivers ensure you reach your destinations comfortably and on time. Trust us for a smooth and stress-free driving experience.</p>
