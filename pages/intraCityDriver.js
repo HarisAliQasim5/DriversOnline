@@ -1,8 +1,11 @@
+import IntracityHero from '@/components/IntracityHero'
 import React from 'react'
 
 const intraCityDriver = () => {
   return (
-    <div>intraCityDriver</div>
+    <div>
+      <IntracityHero/>
+    </div>
   )
 }
 
