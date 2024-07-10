@@ -23,6 +23,7 @@ import KidsFeature from '@/components/KidsFeature';
 import KidsRide from '@/components/KidsRide';
 import KidsCare from '@/components/KidsCare';
 import BookingMain from '@/components/BookingMain';
+import AboutFAQ from '@/components/About/AboutFAQ';
 
 const driveforkids = () => {
   return (
@@ -43,6 +44,7 @@ const driveforkids = () => {
 
         
         <DownloadApp/>
+        <AboutFAQ/>
 
         <Footer/>
     </>

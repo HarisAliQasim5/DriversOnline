@@ -1,3 +1,4 @@
+import AboutFAQ from '@/components/About/AboutFAQ'
 import BookingMain from '@/components/BookingMain'
 import DownloadApp from '@/components/HomePage/DownloadApp'
 import PersonalDrivers from '@/components/PersonalDrivers'
@@ -11,13 +12,15 @@ import React from 'react'
 const personalDriver = () => {
   return (
     <div>
-        <Navbar/>
-     
+      <Navbar/>
+    
       <PersonalDrivers/>
       <BookingMain  category="regular driver for you"/>
       <PersonalServices/>
       <PersonalSteps/>
+
       <DownloadApp/>  
+      <AboutFAQ/>
       <Footer/>
     </div>
   )
