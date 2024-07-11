@@ -13,8 +13,7 @@ const Navbar = () => {
   const menuItems = [
     { id: 2, label: "Drivers for Kids", url: "/driveforkids" },
     { id: 3, label: "Personal Driver", url: "/personalDriver" },
-    { id: 4, label: "Family Driver", url: "/familyDriver" },
-    { id: 5, label: "Intra City Driver", url: "/intraCityDriver" }
+    { id: 4, label: "Driver for Family", url: "/familyDriver" }
   ];
   const menuItemssecond = [
     { id: 2, label: "Home", url: "/" },
@@ -45,14 +44,9 @@ const Navbar = () => {
       <header className={`flex shadow-md  py-4 px-4 sm:px-10 ${darkMode ? "bg-dark text-white shadow-[#283045] " : "bg-white text-black "} font-[sans-serif] min-h-[70px] tracking-wide  z-50  fixed top-0 left-0 right-0`}>
         <div className="flex flex-wrap items-center justify-between gap-5 w-full">
           <a href="/">
-            <img
-              src="/images/logo.png"
-              alt="logo"
-              className="w-12 h-12"
-            />
+            <h1 className="bg-purple  font-extrabold text-white p-2 italic   text-sm py-6 rounded-full">Drivers</h1>
           </a>
-
-          <div className="max-lg:hidden lg:!block max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-50 max-lg:before:inset-0 max-lg:before:z-50">
+          <div className="max-lg:hidden lg:!block max-lg:before:fixed max-lg:before:bg-blac k max-lg:before:opacity-50 max-lg:before:inset-0 max-lg:before:z-50">
             <ul className="lg:flex gap-x-5 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
               {menuItems.map((item) => (
                  <li
